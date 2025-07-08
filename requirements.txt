@@ -1,0 +1,35 @@
+# Core LLM and AI Libraries
+litellm>=1.40.0
+openai>=1.30.0
+
+# FastAPI and Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# CORS and HTTP
+fastapi-cors>=0.0.6
+
+# Vector Database and RAG
+qdrant-client>=1.7.0
+
+# Data Processing and Utilities
+python-multipart>=0.0.6
+typing-extensions>=4.8.0
+
+# Configuration Management
+python-dotenv>=1.0.0
+
+# Optional: Additional AI Providers (uncomment if needed)
+# anthropic>=0.25.0  # For Claude
+# google-generativeai>=0.3.0  # For Gemini
+# groq>=0.4.0  # For Groq
+
+# Development and Testing (optional)
+# pytest>=7.4.0
+# pytest-asyncio>=0.21.0
+# black>=23.0.0
+# flake8>=6.0.0
+
+# Production Deployment (optional)
+# gunicorn>=21.0.0
