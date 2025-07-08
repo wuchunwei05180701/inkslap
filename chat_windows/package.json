@@ -1,5 +1,6 @@
 {
   "name": "inkslap-chat-window",
+  "homepage": "/flowise/6525e15a-af02-4503-a13d-237a25ab63f8",
   "version": "1.0.0",
   "description": "Inkslap Chat Window Component",
   "main": "src/index.js",

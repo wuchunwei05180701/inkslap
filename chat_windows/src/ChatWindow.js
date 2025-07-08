@@ -898,7 +898,7 @@ const ChatWindow = () => {
       // 先嘗試代理
       let response;
       try {
-        response = await fetch('/api/chat', {
+        response = await fetch('https://bot.agatha-ai.com/flowise/16347ad1-56a3-45ff-950c-35bc259865d3/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -912,7 +912,7 @@ const ChatWindow = () => {
       } catch (proxyError) {
         console.warn('代理測試失敗，嘗試直接連接:', proxyError);
         // 如果代理失敗，嘗試直接連接
-        response = await fetch('https://bot.agatha-ai.com/flowise/16347ad1-56a3-45ff-950c-35bc259865d3/chat', {
+        response = await fetch('https://bot.agatha-ai.com/flowise/6525e15a-af02-4503-a13d-237a25ab63f8/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1002,7 +1002,7 @@ const ChatWindow = () => {
       });
 
       // 嘗試使用本地代理，如果失敗則直接調用 API
-      let apiUrl = '/api/chat';
+      let apiUrl = 'https://bot.agatha-ai.com/flowise/16347ad1-56a3-45ff-950c-35bc259865d3/chat';
       let response;
 
       try {
