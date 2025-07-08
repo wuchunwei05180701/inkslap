@@ -586,16 +586,13 @@ const styles = `
 /* Inkslap 簡介樣式 */
 .about-inkslap-container {
   margin: 10px 0;
-  padding: 15px;
-  background-color: #f0f8ff;
-  border: 1px solid #91d5ff;
-  border-radius: 8px;
 }
 
 .about-content {
-  color: #1890ff;
+  color: #333;
   font-size: 14px;
   line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 .about-actions {
