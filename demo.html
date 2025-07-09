@@ -1,0 +1,2810 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片測試結果報告 - 20250709_112609</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .summary {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .summary-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        .summary-item .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .summary-item .label {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .category-stats {
+            margin: 20px 0;
+        }
+        .category-item {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .image-result {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .image-header {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .score.high { color: #27ae60; }
+        .score.medium { color: #f39c12; }
+        .score.low { color: #e74c3c; }
+        .qa-section {
+            margin: 15px 0;
+        }
+        .question {
+            background-color: #e8f4fd;
+            padding: 12px;
+            border-left: 4px solid #3498db;
+            margin: 10px 0 5px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .answer {
+            background-color: #f0f8f0;
+            padding: 12px;
+            border-left: 4px solid #27ae60;
+            margin: 5px 0 10px 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .question-score {
+            float: right;
+            background-color: #34495e;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .timestamp {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 30px;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 15px;
+        }
+        .progress-bar {
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 20px;
+            margin: 5px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 圖片測試結果報告</h1>
+
+        <div class="summary">
+            <h2>📊 測試總結</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="value">0.639</div>
+                    <div class="label">平均得分</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value">48</div>
+                    <div class="label">測試圖片</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value">1351.9s</div>
+                    <div class="label">總耗時</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value">28.2s</div>
+                    <div class="label">平均每張</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-stats">
+            <h2>📂 類別統計</h2>
+            <div class="category-item">
+                <span>1.1Cable簡介及設計規範</span>
+                <div>
+                    <span class="score low">0.040</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>1.★-Cable产品设计规范-JHP20241120</span>
+                <div>
+                    <span class="score high">0.920</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>生產線學習2</span>
+                <div>
+                    <span class="score low">0.505</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>材料介紹.</span>
+                <div>
+                    <span class="score high">0.865</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>材料认识</span>
+                <div>
+                    <span class="score high">0.840</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>客戶抱怨處理規范</span>
+                <div>
+                    <span class="score low">0.435</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>1.4FFC簡介及設計規範</span>
+                <div>
+                    <span class="score low">0.445</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>圖面識別教材</span>
+                <div>
+                    <span class="score low">0.285</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>1.3WH线束加工简介</span>
+                <div>
+                    <span class="score high">0.895</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>合同評審及管理程序</span>
+                <div>
+                    <span class="score low">0.465</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>2.3EC產品工藝簡報-新</span>
+                <div>
+                    <span class="score high">0.890</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>2.1EC产品工艺介绍</span>
+                <div>
+                    <span class="score medium">0.795</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>生產線學習</span>
+                <div>
+                    <span class="score low">0.485</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>2.0常规外部线设计参考</span>
+                <div>
+                    <span class="score high">0.850</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>2.2外部线-應用簡介</span>
+                <div>
+                    <span class="score high">0.850</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>1.0LVDS线束加工简介</span>
+                <div>
+                    <span class="score low">0.450</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>Wire harness Introduction</span>
+                <div>
+                    <span class="score low">0.310</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>1.2Wire Harness 產品設計加工製程介紹</span>
+                <div>
+                    <span class="score high">0.800</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>QSA稽核條款</span>
+                <div>
+                    <span class="score low">0.430</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>產品設計變更管理程序</span>
+                <div>
+                    <span class="score high">0.836</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>客戶退貨處理辦法</span>
+                <div>
+                    <span class="score high">0.895</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>3.1AT-Cable产品设计规范</span>
+                <div>
+                    <span class="score low">0.435</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>客戶滿意度管理程序</span>
+                <div>
+                    <span class="score high">0.845</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <span>cable內訓</span>
+                <div>
+                    <span class="score medium">0.765</span>
+                    <span style="color: #7f8c8d; margin-left: 10px;">(2 張)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>🖼️ 詳細測試結果</h2>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#1 1.1Cable簡介及設計規範_page_17.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.1Cable簡介及設計規範</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 14.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#2 1.1Cable簡介及設計規範_page_18.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.1Cable簡介及設計規範</div>
+                </div>
+                <div class="score low">0.080</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 23.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 8.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中提到的膠帶種類有哪些，它們的主要用途是什麼？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中展示的膠帶中，哪一種適合用於高溫環境，為什麼？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 3M467 和 3M9888T 這兩種膠帶在結構或材料上有什麼不同？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> KA00 膠帶的特點是什麼，它在應用中有哪些優勢？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中提到的膠帶如何根據性能進行分類，它們的分類標準是什麼？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 無法提供答案
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#3 1.★-Cable产品设计规范-JHP20241120_page_37.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.★-Cable产品设计规范-JHP20241120</div>
+                </div>
+                <div class="score high">0.930</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 31.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 93.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的材料包覆重疊面位置要求是什麼？請描述其具體操作步驟。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **材料包覆重疊面位置要求** - 使用膠帶（如Kapton、醋酸等）包覆時，起始處與結尾處需重疊5毫米。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 為什麼需要將重疊區放置在拉帶面，而不是插面？這樣設計的目的和好處是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **重疊區放置在拉帶面而非插面的原因** - 這樣設計是為了防止CONN厚度過大，避免影響組裝。將重疊區放置在拉帶面可以減少對插接面的影響，確保組裝的穩定性和可靠性。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中提到的重疊寬度為多少毫米？這一尺寸對產品設計有何影響？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **重疊寬度** - 重疊寬度為5毫米。這一尺寸有助於確保包覆的穩定性，同時不會過度增加厚度，影響產品的整體設計和功能。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在什麼情況下，重疊區的放置會影響CONN的厚度？如何避免這種情況？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **重疊區影響CONN厚度的情況及避免方法** - 如果重疊區放置在插面，可能會導致CONN厚度增加，影響組裝。避免這種情況的方法是確保重疊區放置在拉帶面，而非插面。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中展示了正確和錯誤的重疊位置，請分析這些圖片並說明如何判斷重疊位置的正確性。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **判斷重疊位置的正確性** - 圖片中展示了正確和錯誤的重疊位置。正確的重疊位置應該在拉帶面，避免在插面上出現重疊。可以通過觀察重疊區是否位於拉帶面來判斷其正確性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#4 1.★-Cable产品设计规范-JHP20241120_page_8.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.★-Cable产品设计规范-JHP20241120</div>
+                </div>
+                <div class="score high">0.910</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 34.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 主线和副线在布线过程中使用的美纹胶带规格是什么？请描述其具体尺寸。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **美纹胶带规格** - 主线和副线在布线过程中使用的美纹胶带规格为：宽10mm，长50mm，共2PCS。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 根据图片内容，主线和副线的最大允许长度分别是多少？如何判断是否可以布双头？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **主线和副线的最大允许长度** - 主线最大长度为930mm。当主线长度乘以2小于930mm时，可以布双头，否则布单头。 - 副线最大长度为850mm。当副线长度乘以2小于850mm时，可以布双头，否则布单头。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 图片中展示了几种不同的布线方式？请分析每种布线方式的适用条件。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **不同的布线方式** - 图片中展示了两种布线方式：双头和单头。 - **双头布线**：适用于线长乘以2小于最大允许长度的情况（主线小于930mm，副线小于850mm）。 - **单头布线**：适用于线长乘以2大于或等于最大允许长度的情况。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在什么情况下需要选择单头布线而不是双头布线？请结合图片中的信息进行说明。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **选择单头布线的情况** - 当线长乘以2大于或等于最大允许长度时，需要选择单头布线。具体来说，主线长度乘以2大于或等于930mm，副线长度乘以2大于或等于850mm时，选择单头布线。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 图片中提到的“Teflon”材料在布线中有什么作用？为什么选择这种材料？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **Teflon材料的作用** - 图片中提到的“Teflon”材料用于布线。Teflon具有优良的耐热性、耐化学性和绝缘性，因此在布线中可以提供良好的保护和绝缘效果。这种材料被选择是因为它能够在高温和苛刻环境下保持稳定的性能。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#5 生產線學習2_page_2.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 生產線學習2</div>
+                </div>
+                <div class="score high">0.910</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 40.5 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這份作業標準書的版本號是多少？請解釋其重要性。
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **版本號** - 版本號是65.0。版本號的重要性在於它能幫助追蹤文件的更新歷史，確保使用者參考的是最新的標準和程序。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在這份文件中，"焊接"項目的版本更新了幾次？每次更新的主要內容是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **焊接項目版本更新** - 焊接項目更新了三次： - 2.0：修改料LED所使用焊錫及溫度；修改烙鐵尖銳絲規格（09.09.21）。 - 4.0：修改紅字；變更項目（10.03.03）。 - 5.0：注意事項一點，增加焊接使用威樂烙鐵（10.04.28）。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 文件中提到的“站別履歷”有幾個不同的版本？它們的更新日期和內容有何不同？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **站別履歷版本** - 站別履歷有多個版本： - 3.0：版次由2.0變更3.0（09.09.17）。 - 4.0：版次由3.0變更4.0（09.09.21）。 - 5.0：版次由4.0變更5.0（09.09.28）。 - 6.0：版次由5.0變更6.0（09.11.16）。 - 7.0：版次由6.0變更7.0（10.01.07）。 - 8.0：版次由7.0變更8.0（10.01.29）。 - 9.0：版次由8.0變更9.0（10.02.09）。 - 10.0：版次由9.0變更10.0（10.03.03）。 - 11.0：版次由10.0變更11.0（10.03.25）。 - 12.0：版次由11.0變更12.0（10.04.28）。 - 13.0：版次由12.0變更13.0（10.05.05）。 - 14.0：版次由13.0變更14.0（10.05.21）。 - 15.0：版次由14.0變更15.0（10.05.29）。 - 16.0：版次由15.0變更16.0（10.06.07）。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 根據圖片內容，"測試電源供應"的版本更新了幾次？更新的具體內容是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **測試電源供應版本更新** - 測試電源供應更新了兩次： - 2.0：修改設定測試條件（10.04.28）。 - 3.0：修改在做焊接料時，焊接選擇所需焊料，焊接選擇正常即可（10.05.29）。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 文件中提到的“電性測試”項目是在哪個日期進行了版本更新？更新內容涉及哪些技術細節？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **電性測試項目版本更新** - 電性測試項目在09.08.25進行了版本更新，版本從1.0更新到2.0，增加電測機確認NG報告的確認方法。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#6 生產線學習2_page_33.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 生產線學習2</div>
+                </div>
+                <div class="score low">0.100</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 28.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 10.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片一和圖片二中展示的固定鐵芯方法有何不同？請描述每個步驟的具體操作。
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 根據圖片三和圖片四，如何確保束線帶的正確安裝位置？有哪些注意事項？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 在圖片五中，為什麼需要將多餘的束線帶剪掉？這樣做有什麼好處？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 根據作業流程，什麼情況下需要使用固定鐵芯治具板？這對操作有何影響？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中的操作需要注意哪些細節以避免損壞鐵芯？請列舉至少兩個注意事項。
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 無法提供答案
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#7 材料介紹._page_10.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 材料介紹.</div>
+                </div>
+                <div class="score high">0.910</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 36.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中所示的同軸線結構有哪些主要組成部分？請具體描述每一部分的功能。
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **主要組成部分**： - **芯線 (Conductor)**：負責傳輸信號的核心部分，通常由銅或其他高導電材料製成。 - **絕緣體 (Insulation)**：包覆在芯線外，防止信號洩漏和短路。 - **銅箔 (Copper)**：提供額外的屏蔽，減少電磁干擾。 - **編織 (Preach)**：通常由金屬線編織而成，提供屏蔽和接地。 - **外被 (Jacket)**：保護內部結構免受物理損傷和環境影響。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中標示的「絕緣體」在同軸線中扮演什麼角色？它如何影響信號傳輸的性能？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **絕緣體的角色**： - 絕緣體在同軸線中防止芯線與外部屏蔽層之間的電接觸，確保信號不會洩漏。它的材料和厚度會影響信號的傳輸性能，特別是在高頻應用中，良好的絕緣可以減少信號損耗。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 為什麼同軸線的外被（Jacket）對於整體電纜的耐用性和安全性至關重要？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **外被的重要性**： - 外被保護電纜免受物理損傷、化學腐蝕和環境因素（如濕氣、紫外線）的影響。它確保電纜的耐用性和安全性，延長使用壽命。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖中提到的「編織」部分在同軸線中有什麼作用？它如何影響電磁干擾的防護？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **編織的作用**： - 編織層提供電磁屏蔽，減少外部電磁干擾對信號的影響。它還提供機械強度，幫助維持電纜的結構完整性。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 40AWG的規格對於同軸線的應用有什麼影響？在選擇電纜時，這一規格如何影響其適用性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **40AWG的影響**： - 40AWG表示導體的直徑較小，適合需要輕量和靈活性的應用，但可能會限制電流承載能力。選擇電纜時，需考慮應用需求，如信號頻率、距離和環境條件，以確保適用性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#8 材料介紹._page_17.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 材料介紹.</div>
+                </div>
+                <div class="score high">0.820</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 18.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 82.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中提到的「焊接式、壓接式、拉焊式」主要適用於什麼類型的線？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 焊接式、壓接式、拉焊式：一般適用於同軸線。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的「穿端式」一般適用於哪種線？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 穿端式：一般適用於電子線。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 「刺破式」技術在圖片中被描述為適用於什麼類型的線？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 刺破式：一般適用於排線。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中提到的技術中，哪一種適用於同軸線？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 焊接式、壓接式、拉焊式適用於同軸線。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據圖片內容，這些技術應用的選擇依據是什麼？
+                    <span class="question-score low">0.300</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 圖片中沒有明確說明這些技術應用的選擇依據。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#9 材料认识_page_12.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 材料认识</div>
+                </div>
+                <div class="score high">0.870</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 27.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 87.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中展示的膠帶型號為何，並且其主要用途是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **膠帶型號及用途** - 型號：3M5# - 主要用途：固定線材、貼平。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中膠帶的寬度標示為多少毫米，這對其應用有何影響？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **膠帶寬度** - 標示為15毫米。 - 影響：較窄的膠帶適合用於細小或精密的固定工作，如線材整理，能夠提供足夠的靈活性和精確度。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 請分析這種膠帶在固定線材時可能需要考慮的技術細節。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **固定線材的技術細節** - 考慮膠帶的粘性，以確保能夠牢固固定線材。 - 耐熱性和耐磨性，特別是在電線或電子設備附近使用時。 - 膠帶的柔韌性，以便於在不規則或彎曲的表面上使用。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中膠帶的顏色和材質可能對其性能有何影響？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **膠帶顏色和材質的影響** - 顏色：淺色可能有助於在需要標記或識別的應用中使用。 - 材質：如果是塑料或聚酯材質，可能提供良好的耐磨性和耐用性。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 如果要將這種膠帶應用於貼平表面，應考慮哪些環境因素以確保最佳效果？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **貼平表面的環境因素** - 表面清潔度：確保表面無塵、無油，以增強粘附效果。 - 溫度和濕度：極端的環境可能影響膠帶的粘性和耐久性。 - 表面材質：不同材質的表面可能需要不同的膠帶特性以確保最佳粘附效果。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#10 材料认识_page_13.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 材料认识</div>
+                </div>
+                <div class="score high">0.810</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 30.4 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 81.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中展示的黑色膠帶主要用途是什麼？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **黑色膠帶的主要用途**： - 黑色膠帶通常用於電氣絕緣、捆綁、固定物品或作為標記。它在製作拉帶時可能用於提供強度和穩定性。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中膠帶的結構有什麼特點？如何影響其性能？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **膠帶的結構特點及其性能影響**： - 膠帶通常由基材和膠黏劑組成。基材的材質（如PVC或布）會影響膠帶的強度和耐用性，而膠黏劑的類型則影響其粘附性能。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 為什麼在製作拉帶時選擇使用黑色膠帶？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **選擇使用黑色膠帶的原因**： - 黑色膠帶可能因其耐用性、抗紫外線性能和不顯眼的顏色而被選用。此外，黑色在某些應用中可能具有美觀或標識的功能。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中的膠帶在應用過程中可能會遇到哪些技術挑戰？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **應用過程中的技術挑戰**： - 可能遇到的挑戰包括膠帶的粘附性不足、在高溫或潮濕環境下失效、以及在某些表面上難以粘附。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 如何測試這種黑色膠帶的耐用性和可靠性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **測試耐用性和可靠性的方法**： - 測試方法包括拉伸強度測試、粘附力測試、耐熱性和耐候性測試，以及在不同環境條件下的老化測試。 如果需要更具體的資訊，可能需要進一步的實驗或技術資料。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#11 客戶抱怨處理規范_page_2.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶抱怨處理規范</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 6.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#12 客戶抱怨處理規范_page_4.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶抱怨處理規范</div>
+                </div>
+                <div class="score high">0.870</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 33.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 87.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這份文件的版本修訂號是多少？其修訂日期是什麼時候？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 版本修訂號是8，修訂日期是2024/9/20。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 附件一至附件三分別描述了哪些流程圖？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 附件一至附件三分別描述了以下流程圖： - 附件一：客訴抱怨流程圖 - 附件二：客戶端重工流程圖 - 附件三：客訴工廠端重工流程圖
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 文件中列出的「客訴退貨通知單」和「重工通知單」有何不同之處？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 文件中列出的「客訴退貨通知單」和「重工通知單」的不同之處： - 「客訴退貨通知單」是用於處理客戶退貨的通知。 - 「重工通知單」是用於通知需要進行重工的情況。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 「改善對策報告書」在文件中有何作用，如何應用於客戶抱怨處理過程？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 「改善對策報告書」在文件中的作用是用於記錄和報告改善措施，應用於客戶抱怨處理過程中，以確保問題得到有效解決並防止再次發生。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 文件中提到的「報廢處理作業辦法」和「退修-重工作業辦法」如何協同工作以解決客戶問題？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 文件中提到的「報廢處理作業辦法」和「退修-重工作業辦法」協同工作以解決客戶問題： - 「報廢處理作業辦法」用於處理無法修復的產品，確保不合格產品不會流入市場。 - 「退修-重工作業辦法」用於處理可以修復的產品，通過重工來滿足客戶要求。兩者協同工作以確保所有客戶問題得到適當處理。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#13 1.4FFC簡介及設計規範_page_30.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.4FFC簡介及設計規範</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 16.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#14 1.4FFC簡介及設計規範_page_6.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.4FFC簡介及設計規範</div>
+                </div>
+                <div class="score high">0.890</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 47.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 89.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> FFC 的導體有哪些形狀，這些形狀在應用中有什麼不同的優勢？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **導體形狀** - FFC 的導體有扁形導體和圓形導體。 - **優勢**： - 扁形導體：通常具有更好的散熱性能和更低的電阻，適合高頻應用。 - 圓形導體：結構更堅固，適合需要更高機械強度的應用。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> PET 絕緣膜有哪些顏色選擇，這些顏色是否會影響絕緣性能？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **PET 絕緣膜顏色** - PET 絕緣膜有白色和黑色之分。 - **影響**： - 顏色本身通常不會直接影響絕緣性能，但可能影響熱管理和光學特性。例如，黑色可能吸收更多熱量。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 加強板的顏色選擇有哪些，這些顏色是否與材料的強度或其他性能相關？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **加強板顏色** - 加強板有藍色（淺藍色）、黑色、黃色及乳白色之分。 - **相關性**： - 顏色通常與材料的強度或性能無直接關聯，但可能影響外觀和識別。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖中所示的 FFC 結構中，絕緣層和加強板的排列順序有何特別之處？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **絕緣層和加強板的排列順序** - 圖中顯示絕緣層和加強板在導體的上下兩側，這種排列提供了良好的機械保護和電氣絕緣。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在設計 FFC 時，如何選擇合適的導體形狀和絕緣膜顏色以滿足特定的技術需求？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **設計選擇** - **導體形狀**：根據應用需求選擇，若需要高頻性能則選擇扁形導體，若需要機械強度則選擇圓形導體。 - **絕緣膜顏色**：根據環境需求選擇，若需要更好的熱管理則選擇白色，若需要吸收光線則選擇黑色。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#15 圖面識別教材_page_13.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 圖面識別教材</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 17.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#16 圖面識別教材_page_10.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 圖面識別教材</div>
+                </div>
+                <div class="score low">0.570</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 29.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 56.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張幻燈片的主題是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **主題** - 這張幻燈片的主題是「圖面識別」，特別是關於「成品圖」及其局部說明。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的「成品圖」可能涉及哪些技術細節？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **成品圖的技術細節** - 成品圖可能涉及技術細節如尺寸標註、材料規格、製造公差、表面處理要求等。這些細節有助於確保製造過程的準確性和一致性。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 如何在技術文件中有效地使用成品圖來增強說明效果？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **成品圖在技術文件中的使用** - 在技術文件中，成品圖可以用來提供視覺參考，幫助讀者更好地理解設計意圖。使用清晰的標註和註釋可以增強說明效果，確保讀者能夠準確地解讀圖面信息。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中提到的「局部說明」在技術圖面中有什麼作用？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **局部說明的作用** - 局部說明在技術圖面中用於詳細描述特定區域的設計特徵或製造要求。這有助於避免誤解，確保每個部分都按照設計意圖正確製造。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在設計技術幻燈片時，如何確保信息的清晰和易讀性？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **設計技術幻燈片的清晰性和易讀性** - 確保信息清晰和易讀性的方法包括使用簡潔的文字、清晰的圖示、適當的字體大小和顏色對比。結構化的內容佈局和一致的格式也有助於提高幻燈片的可讀性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#17 1.3WH线束加工简介_page_8.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.3WH线束加工简介</div>
+                </div>
+                <div class="score high">0.910</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 36.3 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中顯示的鋁箔剝除過程需要使用什麼工具，為什麼選擇這種工具？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **工具選擇** 圖片中使用的是尖嘴鉗。尖嘴鉗適合用來刺破和剝除鋁箔，因為其尖銳的鉗口可以精確地刺破鋁箔而不損傷內部的導線。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在剝除鋁箔的過程中，如何確保不損傷內部的導線？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **確保不損傷導線** 在剝除鋁箔的過程中，應小心控制鉗子的力度和角度，僅刺破鋁箔而不深入，以避免接觸到內部的導線。此外，剝除時應緩慢進行，並確保鋁箔完全分離後再移除。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中的電纜標示為28AWG，這代表什麼含義，如何影響電纜的應用？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **28AWG的含義** 28AWG代表電纜的線徑為28號美國線規（American Wire Gauge）。這表示電纜的直徑較小，適合用於低電流應用，如電子設備的內部連接線。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 剝除鋁箔後，下一步的處理過程可能涉及哪些步驟，為什麼這些步驟是必要的？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **下一步處理過程** 剝除鋁箔後，可能需要進行導線的絕緣處理、接頭焊接或連接器安裝等步驟。這些步驟是必要的，以確保電纜的電氣性能和機械強度。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在工業生產中，這種剝除鋁箔的技術操作對產品質量有什麼影響？如何確保操作的一致性和準確性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **對產品質量的影響** 剝除鋁箔的技術操作對產品質量有直接影響，因為不當操作可能導致導線損傷或短路。為確保操作的一致性和準確性，應使用標準化的工具和流程，並對操作人員進行培訓和質量檢查。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#18 1.3WH线束加工简介_page_11.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.3WH线束加工简介</div>
+                </div>
+                <div class="score high">0.880</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 40.3 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 88.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的“壓接形狀是否正常”是如何判斷的？請描述正常與異常的壓接形狀。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **壓接形狀的判斷** - 正常的壓接形狀應該是均勻且對稱的，能夠牢固地固定電線，並且沒有明顯的變形或損壞。 - 異常的壓接形狀可能包括不均勻的壓接、過度壓扁或未完全壓接，這些都可能導致接觸不良或機械強度不足。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在進行“端子檢驗”時，為什麼需要使用10X放大鏡？這樣做有什麼好處？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **使用10X放大鏡的好處** - 使用10X放大鏡可以更清楚地觀察端子的細節，確保檢查的準確性。 - 這樣可以更容易地發現微小的缺陷或變形，從而提高檢驗的可靠性和質量控制。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中提到“端子的卡勾是否有變形”，這種變形會對端子的功能造成什麼影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **端子卡勾變形的影響** - 端子的卡勾變形可能會導致端子無法正確固定在插座中，從而影響電氣連接的穩定性。 - 這可能導致接觸不良、信號中斷或電流不穩定，進而影響設備的正常運行。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在檢查“端子料帶裁斷位置是否正確”時，應該注意哪些具體細節來確保裁斷位置的準確性？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **端子料帶裁斷位置的檢查** - 應注意裁斷位置的精確性，確保裁斷面平整且無毛刺。 - 應檢查裁斷位置是否在預定的標記處，以確保端子的長度和形狀符合設計要求。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中提到“電線壓接位置是否正常”，如果壓接位置不正常，可能會導致哪些問題？如何進行修正？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **電線壓接位置不正常的問題及修正** - 如果壓接位置不正常，可能會導致電線與端子之間的接觸不良，影響電氣性能。 - 修正方法包括重新調整壓接工具，確保壓接位置正確，並重新進行壓接以達到標準要求。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#19 合同評審及管理程序_page_4.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 合同評審及管理程序</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 15.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#20 合同評審及管理程序_page_1.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 合同評審及管理程序</div>
+                </div>
+                <div class="score high">0.930</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 31.5 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 93.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中顯示的文件編號是什麼？這對文件管理有何重要性？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **文件編號** - JHQMS-007。文件編號對文件管理非常重要，因為它提供了一個獨特的識別碼，方便文件的檢索、追蹤和版本控制。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 根據圖片中的修訂記錄，哪一次修訂是為了符合ISO9001:2015和ISO14001:2015版標準要求？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **符合ISO9001:2015和ISO14001:2015版標準要求的修訂** - 第3次修訂，日期為2016年7月4日。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中提到的“1.0目的”部分，主要目的是什麼？這如何影響合同評審的過程？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **“1.0目的”部分的主要目的** - 確保產品在生產、安裝和服務過程中，準確地理解和掌握顧客的質量要求，並把正確的信息傳遞到有關部門。這影響合同評審的過程，因為它確保公司有履行合同的能力，並使客戶滿意。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在“2.0範圍”部分中，該程序適用於哪些類型的合同？這對於公司運營有何影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **“2.0範圍”部分適用的合同類型** - 適用於產品銷售合同（訂單）的評審及管理。這對公司運營有重要影響，因為它規範了合同的處理流程，確保合同的內容和要求得到滿足。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據“3.0職責”部分，哪個部門負責合同的組織審核、簽訂及管理？這對合同管理流程有何作用？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **“3.0職責”部分負責合同的部門** - 業務部負責銷售合同（訂單）的組織審核、簽訂及管理。這對合同管理流程的作用在於確保合同的正確執行和管理，並維持公司與客戶之間的良好關係。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#21 2.3EC產品工藝簡報-新_page_23.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.3EC產品工藝簡報-新</div>
+                </div>
+                <div class="score high">0.900</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 30.5 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中展示的「TDR FE ConnectorIMPZ」表格中，哪一項測試的平均值最高，並且該值是多少？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **平均值最高的測試項目** - 測試項目：AUX - 平均值：99.47
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在「Before」和「After」的圖表中，哪一個參數的變化最顯著，這種變化對產品性能有何影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **「Before」和「After」圖表中變化最顯著的參數** - 變化最顯著的參數是「TDR Differential(IMPZ)」。 - 這種變化可能表示產品在阻抗匹配上的改善，從而提高信號完整性和減少反射損耗，對產品性能有正面影響。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中提到的「阻抗高頻測試」主要測試哪些技術指標，這些指標對產品質量有何重要性？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **「阻抗高頻測試」的技術指標** - 測試技術指標包括：Return Loss、Attenuation、FEXT、PESELN、Near End Noise、Differential IMPZ等。 - 這些指標對產品質量的重要性在於確保信號傳輸的穩定性和準確性，減少信號損耗和干擾，提高產品的可靠性和性能。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中設備的作用是什麼？它如何協助完成高頻測試？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **設備的作用** - 圖片中的設備用於進行高頻測試，協助測量和分析阻抗、噪聲、損耗等參數。 - 它能夠提供精確的測試數據，幫助工程師識別和解決潛在的性能問題。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據圖片中的數據和圖表分析，這些測試結果如何影響產品的市場競爭力？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **測試結果對產品市場競爭力的影響** - 測試結果顯示產品在高頻性能上的優勢，特別是在阻抗匹配和信號完整性方面的改善。 - 這些優勢使產品在市場上更具競爭力，因為它們能夠滿足更高的性能要求，吸引對信號質量有嚴格要求的客戶。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#22 2.3EC產品工藝簡報-新_page_2.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.3EC產品工藝簡報-新</div>
+                </div>
+                <div class="score high">0.880</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 29.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 88.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的 DP TO DP 加工工藝可能涉及哪些具體技術步驟？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 圖片中沒有提供 DP TO DP 加工工藝的具體技術步驟。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> EC 產品範圍中提到的 HDMI 和 USB 標準有何不同之處？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> HDMI 和 USB 標準的不同之處： - HDMI（High-Definition Multimedia Interface）主要用於傳輸視頻和音頻信號，常用於連接顯示器、電視和其他顯示設備。 - USB（Universal Serial Bus）主要用於數據傳輸和設備供電，適用於多種設備的連接，如存儲設備、鍵盤、鼠標等。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 為什麼公司可能會選擇支持多種接口標準（如 HDMI、USB、VGA 等）？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 公司可能會選擇支持多種接口標準（如 HDMI、USB、VGA 等），以提高產品的兼容性和市場覆蓋率，滿足不同客戶和設備的需求。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中提到的技術標準中，哪一個最適合高帶寬數據傳輸，為什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 圖片中提到的技術標準中，USB 3.1 和 HDMI 2.0 都適合高帶寬數據傳輸。USB 3.1 提供高達 10 Gbps 的數據傳輸速率，而 HDMI 2.0 支持 4K 視頻傳輸，適合高解析度視頻信號。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在設計 DP TO DP 連接器時，可能需要考慮哪些材料和製造工藝以確保產品質量？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 在設計 DP TO DP 連接器時，可能需要考慮以下材料和製造工藝： - 高質量的導體材料（如銅）以確保良好的信號傳輸。 - 耐用的外殼材料（如塑料或金屬）以提供保護和耐用性。 - 精確的製造工藝以確保連接器的尺寸和形狀符合標準，確保良好的連接性能。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#23 2.1EC产品工艺介绍_page_23.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.1EC产品工艺介绍</div>
+                </div>
+                <div class="score high">0.870</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 35.1 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 87.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中的「成型內模」在USB外殼製程中扮演什麼角色？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **成型內模的角色** - 成型內模在USB外殼製程中用於塑造和固定USB接頭的外殼形狀。它確保外殼的尺寸和形狀符合設計規範，提供必要的保護和支撐。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在「Before」和「After」的對比中，USB接頭的結構有什麼具體變化？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **USB接頭的結構變化** - 在「Before」階段，USB接頭僅有基本的金屬結構，沒有外殼保護。在「After」階段，接頭被包覆了一層塑料外殼，提供額外的保護和支撐。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中展示的生產流程如何確保USB接頭的品質和耐用性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **生產流程的品質和耐用性** - 生產流程中使用成型內模技術，確保每個USB接頭的外殼一致且符合設計規範。這種一致性提高了產品的耐用性和可靠性，減少了因外殼不當而導致的故障。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 該生產流程中的「成型內模」技術如何影響最終產品的性能？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **成型內模技術對性能的影響** - 成型內模技術確保外殼的精確成型，提供良好的機械保護，防止物理損壞和環境影響，從而提高USB接頭的性能和使用壽命。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據圖片中的生產流程，如何評估這種製程的效率和潛在改進空間？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **製程效率和改進空間** - 從圖片中可以看出，成型內模技術使得生產流程自動化和標準化，提升了效率。潛在的改進空間可能在於進一步優化模具設計和材料選擇，以提高生產速度和降低成本。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#24 2.1EC产品工艺介绍_page_6.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.1EC产品工艺介绍</div>
+                </div>
+                <div class="score medium">0.720</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 28.1 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 72.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 絕緣體的主要作用是什麼？請詳細說明其功能。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **絕緣體的主要作用** - 絕緣體的主要作用是防止外界電流與內部導體接觸，並保護導體。這樣可以避免電流洩漏，確保電路的安全性和穩定性。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的絕緣材料中，XLPVC 和 SR-PVC 有何區別？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **XLPVC 和 SR-PVC 的區別** - XLPVC 是照射性PVC，通常具有更高的耐熱性和耐化學性，適合在更苛刻的環境中使用。 - SR-PVC 是半硬質PVC，通常用於需要一定柔韌性和耐用性的應用。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 為什麼在選擇絕緣材料時需要考慮其功能？請舉例說明。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **選擇絕緣材料時需要考慮其功能的原因** - 不同的絕緣材料具有不同的特性，如耐熱性、耐化學性、柔韌性等。選擇合適的材料可以確保其在特定應用中的性能。例如，在高溫環境中，使用耐熱性好的材料如XLPVC可以防止材料降解。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> ETFE 和 FEP 作為絕緣材料，有哪些特性使其適合特定應用？
+                    <span class="question-score low">0.300</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **ETFE 和 FEP 的特性** - ETFE 和 FEP 都是氟塑料，具有優異的耐化學性、耐熱性和低摩擦係數。這些特性使其適合用於需要高耐久性和耐腐蝕性的應用，如航空航天和化工行業。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在一般信號傳輸中，為什麼多選用 PVC 和 SR-PVC 作為絕緣材料？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **一般信號傳輸中多選用 PVC 和 SR-PVC 的原因** - PVC 和 SR-PVC 具有良好的絕緣性能和成本效益，適合一般信號傳輸應用。它們提供足夠的保護，並且易於加工和安裝。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#25 生產線學習_page_52.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 生產線學習</div>
+                </div>
+                <div class="score low">0.080</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 22.3 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 8.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片一中顯示的機器設備是什麼型號？其主要功能是什麼？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在操作流程的第二步中，如何確保LCD測試設備的準確定位？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據注意事項，為什麼需要檢查軸心的尺寸和材料？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片四中顯示的定位標記有什麼作用？如何影響整體操作流程？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據文件底部的使用設備或工具欄，這個操作過程需要使用哪些具體工具？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 無法提供答案
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#26 生產線學習_page_34.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 生產線學習</div>
+                </div>
+                <div class="score high">0.890</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 31.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 89.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中的作業流程第1步提到的顯微鏡放大倍率是多少，並且為什麼需要這個倍率？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **顯微鏡放大倍率** - 圖片中的作業流程第1步提到的顯微鏡放大倍率是20-30倍。這個倍率是為了能夠清晰地觀察焊點的細節，確保焊點的質量和準確性。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在圖二中，使用了什麼工具來清潔焊點，並且這個步驟的目的為何？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **清潔焊點的工具** - 在圖二中，使用了刷子來清潔焊點。這個步驟的目的是去除焊點表面的氧化物和雜質，以確保焊接的可靠性和電氣性能。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據注意事項第4點，進行清潔時需要注意什麼，以避免損壞產品？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **清潔時的注意事項** - 根據注意事項第4點，進行清潔時需要注意避免用力過猛，以免損壞產品。這是為了防止在清潔過程中對焊點或其他元件造成物理損傷。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖三展示了什麼樣的操作步驟，這個步驟在整個流程中起到什麼作用？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **圖三的操作步驟** - 圖三展示了將焊點放置在夾具中的操作步驟。這個步驟在整個流程中起到固定焊點的位置，確保在後續操作中焊點不會移動，從而提高操作的精確性和一致性。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 變更履歷中提到的第3.0版修改了什麼內容，這些修改對作業流程有何影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **第3.0版的修改內容** - 變更履歷中提到的第3.0版修改了顯微鏡放大倍率為20-30倍。這些修改對作業流程的影響是提高了觀察的精確性，從而提升了焊接質量的控制。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#27 2.0常规外部线设计参考_page_32.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.0常规外部线设计参考</div>
+                </div>
+                <div class="score high">0.930</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 47.7 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 93.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中，外被的主要材料有哪些？這些材料各自的特性和應用場景是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **外被的主要材料**： - **PVC (聚氯乙烯)**：耐磨、耐化學腐蝕，常用於一般電纜外被。 - **PE (聚乙烯)**：絕緣性能好，耐水性強，適用於戶外電纜。 - **PP (聚丙烯)**：耐熱性好，常用於高溫環境。 - **TPE (熱塑性彈性體)**：柔韌性好，適用於需要頻繁彎曲的電纜。 - **試樣無鹵素等**：環保材料，適用於需要低煙無鹵的環境。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的編織層有什麼作用？16 鍍和 24 鍍的編織數對性能有何影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **編織層的作用**： - 編織層在線材外面編上一層鋁鎧線，起到屏蔽的作用。 - **16鍍和24鍍的編織數**：編織數越高，屏蔽效果越好。24鍍提供更好的電磁干擾屏蔽性能，適用於高干擾環境。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 鋁箔層是由哪些材料組成的？這些材料如何增強電纜的性能？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **鋁箔層的材料**： - 由**AL（鋁）和聚酯薄膜**粘合而成。 - 這些材料增強電纜的屏蔽性能，防止外部電磁干擾進入，並保護內部信號完整性。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 芯線使用了哪些材料？這些材料如何影響電纜的導電性能和耐用性？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **芯線的材料**： - **鍍錫銅絞線**：提高導電性和抗氧化性。 - **FPE料**：發泡聚乙烯，提供良好的絕緣性能。 - **HDPE**：高密度聚乙烯，耐磨損和耐化學腐蝕。 - **無鹵色母**：環保材料，適用於低煙無鹵要求的環境。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 地線由多股鍍錫銅線絞合而成，這種結構設計的優勢是什麼？在什麼情況下會特別需要這種設計？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **地線的結構設計優勢**： - 由多股鍍錫銅線絞合而成，這種設計提高了柔韌性和抗拉強度。 - 特別適用於需要高柔韌性和耐用性的環境，如移動設備或頻繁彎曲的應用場景。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#28 2.0常规外部线设计参考_page_55.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.0常规外部线设计参考</div>
+                </div>
+                <div class="score medium">0.770</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 22.1 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 76.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的 USB 3.0 有哪些具體的應用設備？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 圖片中提到的 USB 3.0 應用設備包括：打印機、攝像機、傳真機、掃描儀、U 盤、MP3、MP4 等。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> USB 3.0 相較於傳統 USB 技術有哪些優勢？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> USB 3.0 相較於傳統 USB 技術的優勢包括：更高的數據傳輸速度和更好的即插即用功能。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中描述的 USB 3.0 的後向兼容性是如何實現的？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 圖片中描述的 USB 3.0 的後向兼容性是通過兼容傳統 USB 技術的易用性和即插即用功能來實現的。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 為什麼即插即用功能對於 USB 3.0 的應用至關重要？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 即插即用功能對於 USB 3.0 的應用至關重要，因為它提高了設備的易用性，允許用戶在不需要重新啟動系統的情況下連接和斷開設備。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據圖片，USB 3.0 如何提高數據傳輸效率？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 根據圖片，USB 3.0 提高數據傳輸效率是通過其更高的數據傳輸速度來實現的。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#29 2.2外部线-應用簡介_page_27.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.2外部线-應用簡介</div>
+                </div>
+                <div class="score high">0.830</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 36.3 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 83.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中的 7P SATA 接頭有什麼特點，如何區分其插頭和插座？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **7P SATA 接頭的特點及區分插頭和插座** - 7P SATA 接頭通常有7個針腳，分為數據傳輸和接地。 - 插頭通常是連接線纜的一端，插座則是固定在設備上的接口。 - 插頭和插座的形狀設計為L型，防止錯誤插入。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中顯示的 7P SATA 線纜適合用於哪些類型的設備連接？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **7P SATA 線纜的適用設備** - 適用於連接硬碟驅動器（HDD）、固態硬碟（SSD）和光碟機等內部存儲設備。 - 常見於桌上型電腦和伺服器中。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 請分析圖片中 SATA 接頭的設計，如何確保數據傳輸的穩定性和可靠性？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **SATA 接頭的設計確保數據傳輸的穩定性和可靠性** - L型設計防止錯誤插入，確保連接穩定。 - 金屬夾具提供額外的固定，防止鬆動。 - 使用高品質材料和精密製造技術，減少信號干擾。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 根據圖片中的設計，7P SATA 接頭的安裝需要注意哪些技術細節？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **7P SATA 接頭安裝的技術細節** - 確保插頭和插座的方向正確，避免損壞針腳。 - 安裝時應輕輕插入，避免用力過大。 - 確保線纜不過度彎曲，以免影響信號傳輸。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中展示的 7P SATA 接頭與其他類型的 SATA 接頭有何不同，應用場景有何差異？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **7P SATA 接頭與其他 SATA 接頭的不同及應用場景** - 7P SATA 接頭專注於數據傳輸，而15P SATA 接頭則包括電源供應。 - 7P 接頭主要用於內部設備連接，而eSATA等其他類型則用於外部設備連接。 - 不同類型的接頭根據應用場景選擇，以滿足不同的連接需求。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#30 2.2外部线-應用簡介_page_30.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 2.2外部线-應用簡介</div>
+                </div>
+                <div class="score high">0.870</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 35.2 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 87.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這張圖片中展示的 ODD SATA 接口的主要功能是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **ODD SATA 接口的主要功能** - ODD SATA（光碟機串行ATA）接口的主要功能是為光碟機提供數據傳輸和電力供應。它允許光碟機與計算機主板進行高速數據交換。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖中顯示的線纜如何連接到光碟機以確保數據傳輸的穩定性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **線纜連接到光碟機的方式** - 圖中顯示的線纜應該有兩個連接器：一個是數據連接器，另一個是電源連接器。數據連接器連接到光碟機的SATA接口，而電源連接器則連接到光碟機的電源接口，以確保穩定的數據傳輸和電力供應。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據圖片中的設備，如何判斷這些組件是否符合現行的技術標準？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **判斷組件是否符合技術標準** - 圖片中顯示的SATA接口和光碟機是常見的標準組件。要判斷其是否符合現行技術標準，可以檢查其是否符合SATA協會的規範（如SATA 3.0），並查看光碟機是否支持最新的光碟格式（如DVD、Blu-ray）。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖中展示的光碟機使用了哪種類型的光碟，這對其應用有何影響？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **光碟機使用的光碟類型及其影響** - 圖中展示的光碟機似乎使用的是標準的光碟（如CD或DVD）。這影響其應用範圍，因為不同類型的光碟機支持不同的光碟格式，這會影響其在多媒體播放、數據存儲等方面的應用。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖片中展示的技術如何在全球市場中保持競爭力？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **技術在全球市場中的競爭力** - SATA接口和光碟機技術在全球市場中保持競爭力的關鍵在於其普遍性和兼容性。SATA接口是目前主流的數據傳輸接口之一，廣泛應用於各類存儲設備。光碟機則因其在多媒體播放和數據備份中的應用而保持一定的市場需求。技術的更新和對新格式的支持也有助於其競爭力的維持。 如果需要更詳細的技術規範或標準，建議查閱相關技術文檔或產品說明書。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#31 1.0LVDS线束加工简介_page_29.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.0LVDS线束加工简介</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 17.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#32 1.0LVDS线束加工简介_page_7.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.0LVDS线束加工简介</div>
+                </div>
+                <div class="score high">0.900</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 28.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 在成品測試階段，使用了哪些設備來進行測試，這些設備的主要功能是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **成品測試** - 使用了示波器和其他電子測試設備。 - 主要功能是檢測產品的電氣性能，確保其符合設計規範。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 尺寸全檢的過程中，如何確保測量的精確性和一致性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **尺寸全檢** - 使用量具如卡尺或測量儀器。 - 確保測量精確性和一致性的方法包括定期校準設備和使用標準化的測量程序。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 外觀全檢中，主要檢查哪些外觀特徵，如何判斷產品是否合格？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **外觀全檢** - 檢查產品的表面質量、顏色一致性、標記清晰度等。 - 判斷產品是否合格的標準通常是根據預定的外觀規範和客戶要求。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> PPID 掃描的步驟中，數據是如何被記錄和追蹤的，這對生產流程有什麼重要性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **PPID 掃描** - 使用條碼掃描器記錄產品的唯一識別碼。 - 數據被記錄在系統中，便於追蹤產品的生產和流通，對生產流程的追溯性和品質管理非常重要。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 包裝和封箱階段有哪些關鍵步驟，如何確保產品在運輸過程中的安全性？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **包裝和封箱** - 關鍵步驟包括檢查包裝材料的完整性、正確放置產品、封箱和貼標。 - 確保產品在運輸過程中的安全性的方法包括使用防震材料和牢固的封箱膠帶。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#33 Wire harness Introduction_page_14.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: Wire harness Introduction</div>
+                </div>
+                <div class="score medium">0.620</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 29.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 61.999999999999986%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 如何評估連接器和線材的搭配加工可行性，並確保其符合設計要求？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **如何評估連接器和線材的搭配加工可行性，並確保其符合設計要求？** - 確認連接器和線材的物理尺寸和電氣特性是否匹配。 - 檢查連接器的插拔力和耐久性是否符合應用需求。 - 確保加工工藝（如焊接、壓接）能夠穩定地實現連接。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在選擇替代料件時，應考慮哪些因素以確保不影響電纜的性能和成本？
+                    <span class="question-score medium">0.600</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **在選擇替代料件時，應考慮哪些因素以確保不影響電纜的性能和成本？** - 確認替代料件的電氣性能（如阻抗、電容）與原料件相似。 - 評估替代料件的機械性能（如柔韌性、耐磨性）。 - 考慮成本效益，確保替代料件不會顯著增加成本。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 當設計多頭電纜時，如何確定各分段的線數和長度以滿足應用需求？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **當設計多頭電纜時，如何確定各分段的線數和長度以滿足應用需求？** - 根據應用需求確定每個分段所需的線數。 - 計算各分段的長度以確保能夠覆蓋所有連接點。 - 確保整體設計符合電氣和機械要求。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在選擇外觀材料如導電布和醋酸布時，應如何評估其對電纜性能的影響？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **在選擇外觀材料如導電布和醋酸布時，應如何評估其對電纜性能的影響？** - 評估材料的屏蔽效果和耐磨性。 - 確認材料的耐溫性和環境適應性。 - 確保材料不會對信號傳輸造成干擾。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 為滿足高頻和高低溫測試要求，電纜設計中應考慮哪些特殊材料和結構？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **為滿足高頻和高低溫測試要求，電纜設計中應考慮哪些特殊材料和結構？** - 使用低損耗介質材料以減少高頻損耗。 - 選擇耐高低溫的絕緣和護套材料。 - 設計適當的屏蔽結構以減少電磁干擾。 如果需要更具體的建議，建議參考相關技術資料或與專業工程師討論。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#34 Wire harness Introduction_page_18.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: Wire harness Introduction</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 8.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#35 1.2Wire Harness 產品設計加工製程介紹_page_32.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.2Wire Harness 產品設計加工製程介紹</div>
+                </div>
+                <div class="score medium">0.790</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 36.3 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 79.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的「internal wire harness」在筆記型電腦中有什麼作用？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **Internal Wire Harness 的作用** - 在筆記型電腦中，internal wire harness（內部線束）負責連接不同的電子元件，確保電力和數據的傳輸。它是筆記型電腦內部電路的關鍵組成部分，支持設備的正常運行。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 什麼是「hinge portion」，它在筆記型電腦的設計中有何重要性？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **Hinge Portion 的重要性** - Hinge portion（鉸鏈部分）是筆記型電腦設計中的關鍵部件，負責連接螢幕和鍵盤部分。它允許螢幕的開合，並提供必要的支撐和穩定性，確保螢幕在不同角度下的使用。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中展示的三種類型的電腦（筆記型電腦、台式電腦、AIO 電腦）在結構上有什麼主要區別？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **三種類型電腦的結構區別** - 筆記型電腦：結構緊湊，將所有元件集成在一個可攜帶的機身中。 - 台式電腦：通常由獨立的主機、顯示器和外設組成，結構較大，適合固定使用。 - AIO 電腦：將所有元件集成在顯示器中，結構比台式電腦更緊湊，但不如筆記型電腦便攜。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中的技術圖片如何體現了今皓實業股份有限公司的技術創新？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **技術圖片體現的技術創新** - 圖片展示了筆記型電腦的內部結構，強調了內部線束和鉸鏈部分的設計，這些都是技術創新的體現，顯示了今皓實業在電腦設計和製造上的專業能力。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 為什麼「Perfected technology and innovative spirit」對於全球市場的脈動至關重要？這在圖片中如何體現？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **「Perfected technology and innovative spirit」的重要性** - 這句話強調了技術完善和創新精神在全球市場中的重要性。圖片中展示的技術細節和產品類型反映了公司在技術創新上的投入，這對於在競爭激烈的市場中保持領先地位至關重要。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#36 1.2Wire Harness 產品設計加工製程介紹_page_19.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 1.2Wire Harness 產品設計加工製程介紹</div>
+                </div>
+                <div class="score high">0.810</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 24.5 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 81.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖中提到的 HSG 材料有哪些，這些材料在連接器中有什麼具體用途？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **HSG 材料**： - 圖中提到的 HSG 材料有 Nylon66、Nylon46 和 LCP。前兩種材料一般用於穿端子式或刺破式，LCP 則用於焊接式。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 為什麼磷青銅和黃銅被選為端子的常見材料，這些材料各自的特性是什麼？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **磷青銅和黃銅的選擇及特性**： - 磷青銅和黃銅被選為端子的常見材料。磷青銅具有良好的彈性和導電性，適合需要高耐久性的應用。黃銅則具有良好的導電性和耐腐蝕性，適合一般用途。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 小 Pitch 端子通常使用哪種材料，這對於其應用有何影響？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **小 Pitch 端子材料**： - 小 Pitch 端子一般使用磷青銅。這種材料的彈性和導電性使其適合於需要精密連接的應用。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖中提到的焊接式和穿端子式有何區別，這些方法各自適合什麼樣的應用場景？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **焊接式和穿端子式的區別**： - 焊接式適合於需要牢固連接的應用，通常用於高振動環境。穿端子式則適合於需要快速安裝和拆卸的應用。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 鍍錫和鍍金在端子應用中有何不同，為什麼鍍金被認為更昂貴？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **鍍錫和鍍金的不同**： - 鍍錫和鍍金在端子應用中有不同的特性。鍍錫成本較低，適合一般用途。鍍金則提供更好的導電性和耐腐蝕性，但成本較高，因此被認為更昂貴。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#37 QSA稽核條款_page_15.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: QSA稽核條款</div>
+                </div>
+                <div class="score low">0.460</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 23.4 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 46.00000000000001%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 這份檢查清單中是否有關於檢驗指標的具體參考標準？如果有，這些標準是如何定義的？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在檢驗過程中，是否有明確的程序來確保樣品的正確存取和處理？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 對於檢驗環境的要求，是否有針對環境條件如溫度、濕度等的具體規範？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 檢查清單中是否有關於設備校準和維護的詳細記錄要求？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在檢驗過程中，是否有明確的程序來處理過期或不合格的材料和產品？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 無法提供答案
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#38 QSA稽核條款_page_19.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: QSA稽核條款</div>
+                </div>
+                <div class="score low">0.400</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 29.0 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 40.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 什麼是材料的追溯性，並且如何在生產過程中實現這一點？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **什麼是材料的追溯性，並且如何在生產過程中實現這一點？** 材料的追溯性是指能夠追蹤和記錄材料從供應商到最終產品的整個過程。這可以通過使用條碼、RFID標籤和數字化系統來實現，確保每個材料批次都有唯一的識別碼，並在每個生產階段記錄相關信息。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在供應鏈中，如何確保產品在儲存和運輸過程中的完整性和安全性？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **在供應鏈中，如何確保產品在儲存和運輸過程中的完整性和安全性？** 確保產品完整性和安全性的方法包括使用適當的包裝材料、控制儲存和運輸環境（如溫度和濕度）、實施嚴格的安全檢查程序，以及使用防篡改裝置和追蹤技術來監控產品位置和狀態。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 為什麼在庫存管理中使用FIFO方法，這對產品質量有何影響？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **為什麼在庫存管理中使用FIFO方法，這對產品質量有何影響？** FIFO（先進先出）方法確保最早進入庫存的產品最先被使用，這有助於減少產品過期或變質的風險，特別是對於有保質期的產品。這有助於維持產品質量，減少浪費。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 如何評估和管理可能影響產品質量的環境因素？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **如何評估和管理可能影響產品質量的環境因素？** 評估和管理環境因素可以通過監測和控制生產和儲存環境中的溫度、濕度、光照和污染物等因素來實現。使用傳感器和自動化系統來持續監控這些參數，並在超出設定範圍時自動調整。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在生產過程中，如何確保員工遵循安全操作程序以減少事故風險？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **在生產過程中，如何確保員工遵循安全操作程序以減少事故風險？** 確保員工遵循安全操作程序的方法包括提供定期的安全培訓、制定和張貼清晰的操作指南、使用個人防護裝備，以及實施嚴格的監督和報告制度來及時識別和糾正不安全行為。 如果有其他問題或需要進一步的幫助，請隨時告訴我！
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#39 產品設計變更管理程序_page_7.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 產品設計變更管理程序</div>
+                </div>
+                <div class="score high">0.932</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 21.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 93.2%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 什麼是 WH/FO 產品在膠殼上打點的顏色標記規範？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> WH/FO 產品在膠殼上打點的顏色標記規範是：黑色膠殼打白點，非黑色膠殼打黑點。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> MCC/CO 產品在標籤上沒有文字的區域應如何進行顏色標記？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> MCC/CO 產品在標籤上沒有文字的區域應進行的顏色標記是：黑底標籤打白點，非黑標籤打黑點。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 外箱標示中，產品變更後的標籤應如何標記？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 外箱標示中，產品變更後的標籤應標記為「新品」標籤。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 在 6.5.5 節中，工程變更完成後需要填寫哪一份文件來確認變更狀況？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 在 6.5.5 節中，工程變更完成後需要填寫的文件是 KSEN-013 01-F02【工程變更狀況追蹤表】來確認變更狀況。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據 7.0 相關文件及表單，哪一份文件用於工程變更需求的提出？
+                    <span class="question-score high">0.960</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 根據 7.0 相關文件及表單，用於工程變更需求的提出的文件是 KSEN-017 00-F01【工程變更需求單ECR】。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#40 產品設計變更管理程序_page_4.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 產品設計變更管理程序</div>
+                </div>
+                <div class="score medium">0.740</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 29.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 74.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 在文件中，工程變更需求單（ECR）的編碼原則是什麼？請詳細描述其編碼邏輯。
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **工程變更需求單（ECR）的編碼原則**： - 編碼原則為：JHP-1001.JHP代表是山今皓光電，後四位之第一位代表年份，後三位代表ECR流水號。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 根據文件內容，當產品設計變更時，哪些部門需要參與並確認變更資料？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **產品設計變更時需要參與並確認變更資料的部門**： - 品保部、品管部、SQE（供應商質量工程師）等部門需要確認材料變更時的相關資料。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 文件中提到的PPK和CPK分析是用來評估什麼？這些指標的具體意義是什麼？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **PPK和CPK分析的評估內容及意義**： - 用於初始能力分析，PPK ≥ 1.67, CPK ≥ 1.33。這些指標用來評估製程能力，確保產品質量穩定。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 文件中提到的「4M變動許可回答確認書」在什麼情況下需要填寫，並由誰來簽核？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **「4M變動許可回答確認書」的填寫情況及簽核人**： - 當填寫工程變更需求單（ECR）時需要填寫，並由工程部最高長官簽核。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在進行工程變更時，文件要求如何處理與材料變更相關的環保及法規文件（如REACH調查表）？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **材料變更相關的環保及法規文件處理**： - 需要將ECR與相關可靠性報告掃描電子檔，並與客戶或SQE進行確認材料變更時，不使用有害物質聲明書、零件成分表、REACH調查表及第三方公正單位測試報告等。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#41 客戶退貨處理辦法_page_1.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶退貨處理辦法</div>
+                </div>
+                <div class="score high">0.950</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 25.5 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 95.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 文件的版本修訂號是多少，最近一次修訂的日期是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 文件的版本修訂號是4，最近一次修訂的日期是2024年9月20日。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在2016年7月4日的修訂中，文件新增了哪些內容？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 在2016年7月4日的修訂中，文件新增了「配合ISO9001:2015&ISO14001:2015版體系要求修正內容」。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據文件內容，客戶退貨處理的主要目的和範圍是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 根據文件內容，客戶退貨處理的主要目的是「明訂客戶退貨處理程式，使各相關單位人員執行有所依循」。範圍是「適用於公司所有客戶退貨資訊的處理」。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 哪些職責與客戶退貨資訊的確認和處理有關，涉及哪些部門？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 與客戶退貨資訊的確認和處理有關的職責包括： - 業務負責退貨資訊確認，形成客訴通知單，知會廠內，並表示客退品的處理方式。 - CQE負責退貨資訊收集、退貨品的確認，並提出處理方式。 - 倉庫負責退品接收、倉儲。 - 生管負責退品重工排程。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 文件的頁碼和總頁數是如何標示的？這對文件管理有何意義？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 文件的頁碼和總頁數標示為「1 of 4」。這對文件管理的意義在於能夠清楚地知道文件的總頁數和當前頁碼，方便文件的組織、查找和確保完整性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#42 客戶退貨處理辦法_page_4.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶退貨處理辦法</div>
+                </div>
+                <div class="score high">0.840</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 24.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 83.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 文件編號為何？此編號在文件管理中有何重要性？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 文件編號為 JHQMS-017-02。此編號在文件管理中有助於識別和追蹤特定文件，確保文件的組織和檢索效率。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 版本修訂的次數為何？這對於文件的更新和追蹤有何影響？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 版本修訂的次數為 4。版本修訂次數有助於追蹤文件的更新歷史，確保使用者參考的是最新版本，並了解文件的變更內容。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據圖片中的內容，完成成品出庫的流程包括哪些步驟？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 根據圖片中的內容，完成成品出庫的流程包括：完成成品出庫單、提交出品報廢申請、接報廢流程執行。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中提到的「客訴退貨通知單」在退貨處理中扮演什麼角色？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 圖片中提到的「客訴退貨通知單」在退貨處理中扮演著通知和記錄客戶投訴及退貨需求的角色，確保相關部門能及時處理和跟進。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 「客戶抱怨處理規範」如何影響客戶服務的質量和公司聲譽？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 「客戶抱怨處理規範」有助於標準化客戶投訴的處理流程，提升客戶服務的質量，並維護公司聲譽，確保客戶問題得到有效解決。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#43 3.1AT-Cable产品设计规范_page_7.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 3.1AT-Cable产品设计规范</div>
+                </div>
+                <div class="score low">0.000</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 24.7 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖中顯示的布線圖中，使用了哪些顏色來區分不同類型的線路，這些顏色代表什麼意義？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖中的接線端子標註了哪些編號，這些編號如何幫助進行安裝和維護？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 根據圖中所示的布線路徑，如何確保線路的安全性和穩定性？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖中是否有標註電纜的長度和規格？這些信息對於布線有何重要性？
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 無法提供答案
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 圖中顯示的元件符號和連接方式是否符合行業標準？請說明這些標準的重要性。
+                    <span class="question-score low">0.000</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 無法提供答案
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#44 3.1AT-Cable产品设计规范_page_6.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 3.1AT-Cable产品设计规范</div>
+                </div>
+                <div class="score high">0.870</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 28.7 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 86.99999999999999%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 根據圖片中的信息，BP01 的功能是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **BP01 的功能** BP01 的功能是右門線束對接儀表線束。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的廠商是誰，這對於選擇插件有什麼影響？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **廠商** 圖片中提到的廠商是 THB。選擇插件時，廠商的可靠性和產品質量會影響選擇，因為不同廠商的產品可能在兼容性和耐用性上有所不同。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 插件號 0457204 的端子規格範圍是什麼？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **插件號 0457204 的端子規格範圍** 插件號 0457204 的端子規格範圍未直接列出，但可以從端子號的規格推測。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中列出的端子號有哪些，它們的尺寸範圍分別是什麼？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **端子號及尺寸範圍** - 端子號 PP0137506：尺寸範圍是 0.3~0.5 - 端子號 PP0137508：尺寸範圍是 0.85~1.25 - 端子號 PP0137507：尺寸範圍是 1.25~1.5
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 如何根據圖片中的信息確定右門線束對接儀表線束的正確連接方式？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **確定右門線束對接儀表線束的正確連接方式** 根據圖片中的信息，確定正確連接方式需要匹配端子的尺寸範圍，確保選擇的端子能夠適合對應的線束規格。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#45 客戶滿意度管理程序_page_2.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶滿意度管理程序</div>
+                </div>
+                <div class="score medium">0.750</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 31.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 75.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> **描述性問題**：
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **描述性問題**： - 這是一份關於「客戶滿意度管理程序」的文件，文件編號為 JHQMS-017，版本修訂為第2版，修訂日期為2016年7月4日。文件的頁數是第2頁，共3頁。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> **分析性問題**：
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **分析性問題**： - 文件詳細描述了客戶滿意度調查的程序，包括調查的頻率、方法、以及如何處理和分析調查結果。文件強調了內部和外部的數據收集和分析，並要求對調查結果進行整理和報告。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> **應用性問題**：
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **應用性問題**： - 文件中的程序可以應用於公司內部的質量管理系統，以確保客戶滿意度的持續提升。這些程序有助於識別客戶需求和期望，並制定相應的改進措施。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> **評估性問題**：
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **評估性問題**： - 文件提供的程序是詳細且結構化的，能夠有效地幫助公司了解客戶滿意度並進行改進。然而，文件中可能需要更多的實例或案例來說明如何實際應用這些程序。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> **改進性問題**：
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **改進性問題**： - 文件可以增加更多的實際案例或成功案例，以幫助理解和應用這些程序。此外，增加對於如何處理負面反饋的具體步驟和策略，可能會使文件更具實用性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#46 客戶滿意度管理程序_page_3.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: 客戶滿意度管理程序</div>
+                </div>
+                <div class="score high">0.940</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 26.8 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 94.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 根據圖片中的評價結果，如何區分客戶滿意度的不同等級？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 根據圖片中的評價結果，客戶滿意度的不同等級區分如下： - A級: 很滿意 (100分~90分) - B級: 滿意 (89分~80分) - C級: 尚可 (79分~70分) - D級: 不滿意 (69分~0分)
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 圖片中提到的「記錄控制程序」的保存期限是多久？HSF相關記錄的保存期限又是多久？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 圖片中提到的「記錄控制程序」的保存期限是四年。HSF相關記錄的保存期限是十年。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 如果評價結果為B級或以下，應該根據哪一條款進行後續處理？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 如果評價結果為B級或以下，應該根據4.2條款進行後續處理。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中列出的相關文件及表單中，哪一個文件是用於統計客戶滿意度調查結果的？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 圖片中列出的相關文件及表單中，用於統計客戶滿意度調查結果的文件是JHQMS-017-F03【客戶滿意度調查統計表】。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在這個客戶滿意度管理程序中，如何處理和保存客戶信息和處理過程中的記錄和評價記錄？
+                    <span class="question-score high">0.950</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 在這個客戶滿意度管理程序中，客戶信息和處理過程中的記錄和評價記錄應按照「記錄控制程序」的要求進行管理和保存，保存期限為四年。HSF相關記錄則需保存十年。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#47 cable內訓_20240415_page_3.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: cable內訓</div>
+                </div>
+                <div class="score medium">0.680</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 35.6 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 68.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的焊接式連接器（solder style）主要適用於哪些類型的電路板，並且其優點和缺點是什麼？
+                    <span class="question-score low">0.400</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> **焊接式連接器（solder style）** - **適用類型**：主要用於印刷電路板（PCB）和需要穩定連接的電子設備。 - **優點**：提供穩定的電氣連接，耐用性高，適合高頻應用。 - **缺點**：安裝和維護較為繁瑣，需要專業設備和技術。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 刺破式連接器（puncture style）在設計上如何確保電氣連接的可靠性，並且通常在哪些應用中使用？
+                    <span class="question-score low">0.500</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> **刺破式連接器（puncture style）** - **設計可靠性**：通過刺破絕緣層直接接觸導線，確保電氣連接的穩定性。 - **應用**：常用於需要快速連接的應用，如電信和數據通信設備。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 穿端子（IDC housing）連接器的安裝過程是怎樣的，並且與其他類型的連接器相比有何優勢？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> **穿端子（IDC housing）** - **安裝過程**：將導線壓入連接器的槽中，連接器內的金屬片會刺穿導線的絕緣層，實現電氣連接。 - **優勢**：安裝快速，不需要剝線，適合大批量生產。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中展示的 Board to Board 連接器在電路設計中扮演什麼角色，並且其選擇需要考慮哪些技術參數？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> **Board to Board 連接器** - **角色**：用於將兩塊電路板直接連接，實現信號和電力的傳輸。 - **技術參數**：需要考慮接觸阻抗、耐電壓、機械強度和尺寸等。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 根據圖片中的信息，這些連接器在製造和測試過程中需要注意哪些關鍵技術細節以確保其性能和可靠性？
+                    <span class="question-score medium">0.700</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> **製造和測試過程中的關鍵技術細節** - **注意事項**：確保接觸點的清潔和精確對位，進行電氣性能測試和機械強度測試，以確保連接器的性能和可靠性。
+                </div>
+            </div>
+        </div>
+        <div class="image-result">
+            <div class="image-header">
+                <div>
+                    <strong>#48 cable內訓_20240415_page_5.png</strong>
+                    <div style="font-size: 14px; opacity: 0.9;">類別: cable內訓</div>
+                </div>
+                <div class="score high">0.850</div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>⏱️ 處理時間:</strong> 26.9 秒
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85.0%"></div>
+            </div>
+
+            <div class="qa-section">
+                <h3>💬 問答詳情</h3>
+                <div class="question">
+                    <strong>Q1:</strong> 圖片中提到的「壓排式」製程主要應用於哪種類型的電子線材連接？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A1:</strong> 圖片中提到的「壓排式」製程主要應用於扁平排線（Flat Ribbon Cable）的連接。
+                </div>
+                <div class="question">
+                    <strong>Q2:</strong> 在「排線」的機器壓排過程中，可能會遇到哪些技術挑戰？
+                    <span class="question-score high">0.900</span>
+                </div>
+                <div class="answer">
+                    <strong>A2:</strong> 在「排線」的機器壓排過程中，可能會遇到的技術挑戰包括： - 精確對齊：確保每根線都正確對齊到連接器的插槽中。 - 壓接力度：需要適當的壓力以確保良好的電氣接觸而不損壞線材。 - 線材損傷：避免在壓排過程中損壞線材絕緣層。
+                </div>
+                <div class="question">
+                    <strong>Q3:</strong> 圖片中提到的「點膠」和「FD電測」在製程中各自的作用是什麼？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A3:</strong> 圖片中提到的「點膠」和「FD電測」在製程中的作用： - 點膠：用於固定和保護連接點，防止環境因素影響。 - FD電測：用於檢測電氣連接的完整性和性能，確保沒有短路或斷路。
+                </div>
+                <div class="question">
+                    <strong>Q4:</strong> 圖片中展示的兩種元件在電子線製程中如何協同工作？
+                    <span class="question-score high">0.850</span>
+                </div>
+                <div class="answer">
+                    <strong>A4:</strong> 圖片中展示的兩種元件在電子線製程中協同工作： - 連接器和排線需要精確對接，通過壓排機器進行壓接，確保電氣連接的可靠性。
+                </div>
+                <div class="question">
+                    <strong>Q5:</strong> 在進行「FD電測」時，可能需要考慮哪些測試標準和參數？
+                    <span class="question-score high">0.800</span>
+                </div>
+                <div class="answer">
+                    <strong>A5:</strong> 在進行「FD電測」時，可能需要考慮的測試標準和參數包括： - 電阻測試：檢查連接的電阻值是否在規範範圍內。 - 絕緣測試：確保沒有不必要的電流泄漏。 - 短路和斷路測試：檢查是否存在短路或斷路情況。
+                </div>
+            </div>
+        </div>
+        <div class="timestamp">
+            📅 報告生成時間: 2025-07-09 11:26:09
+            <br>
+            🤖 圖片測試系統 v2.0 - 基於 GPT-4o 視覺模型
+        </div>
+    </div>
+
+    <!-- Inkslap 聊天機器人 Web Component -->
+    <!-- 添加聊天窗口元素 -->
+    <chat-window-element
+        api-url="https://bot.agatha-ai.com/flowise/16347ad1-56a3-45ff-950c-35bc259865d3/chat"
+        history-path="/history.json">
+    </chat-window-element>
+
+    <!-- 引入聊天窗口 Web Component 腳本 -->
+    <script src="https://bot.agatha-ai.com/flowise/6525e15a-af02-4503-a13d-237a25ab63f8/chat-window-element.js"></script>
+</body>
+</html>

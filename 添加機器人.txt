@@ -1,0 +1,11 @@
+    <!-- Inkslap 聊天機器人 Web Component -->
+    <!-- 添加聊天窗口元素 -->
+    <chat-window-element
+        api-url="https://bot.agatha-ai.com/flowise/16347ad1-56a3-45ff-950c-35bc259865d3/chat"
+        history-path="/history.json">
+    </chat-window-element>
+
+    <!-- 引入聊天窗口 Web Component 腳本 -->
+    <script src="https://bot.agatha-ai.com/flowise/6525e15a-af02-4503-a13d-237a25ab63f8/chat-window-element.js"></script>
+</body>
+</html>
