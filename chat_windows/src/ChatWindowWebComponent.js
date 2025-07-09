@@ -30,12 +30,12 @@ const styles = `
   transition: all 0.3s ease;
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 40px;
 }
 
 .chat-window-container.minimized {
   min-height: auto;
-  bottom: 0;
+  bottom: 20px;
 }
 
 .chat-header {
@@ -410,6 +410,53 @@ const styles = `
   box-shadow: 0 2px 8px rgba(24, 144, 255, 0.1);
 }
 
+/* 可點擊商品卡片增強樣式 */
+.clickable-product-card {
+  cursor: pointer;
+}
+
+.clickable-product-card:hover {
+  border-color: #1890ff;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.2);
+  transform: translateY(-2px);
+  background-color: #fff;
+}
+
+.clickable-product-card:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+}
+
+/* 商品興趣訊息樣式 */
+.product-interest-container {
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.product-interest-container p {
+  margin: 0;
+  color: #52c41a;
+  font-weight: 500;
+}
+
+/* 商品詳細資訊樣式 */
+.product-detail-container {
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px 0;
+}
+
+.product-detail-container p {
+  margin: 4px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
 .product-image {
   width: 60px;
   height: 60px;
@@ -477,6 +524,7 @@ const styles = `
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-items: center;
 }
 
 .no-products-message {
@@ -524,6 +572,7 @@ const styles = `
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-items: center;
 }
 
 /* 商品搜尋結果底部按鈕樣式 */
@@ -535,6 +584,7 @@ const styles = `
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -599,6 +649,7 @@ const styles = `
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-items: center;
   margin-top: 15px;
 }
 `;
@@ -906,13 +957,13 @@ const ChatWindowComponent = (props) => {
       text: '了解 Inkslap 禮贈平台',
       response: `您好，Inkslap 是一個專注於禮贈品的平台，提供多樣化的商品選擇和客製化服務。我們的特色包括：
 
-正版授權：平台上的所有品牌與肖像均為官方正版授權，確保您購買的商品具有合法性與品質保障。
+• 正版授權：平台上的所有品牌與肖像均為官方正版授權，確保您購買的商品具有合法性與品質保障。
 
-多樣化商品：我們提供各類型的禮贈品，並可依據您的需求進行客製化設計。
+• 多樣化商品：我們提供各類型的禮贈品，並可依據您的需求進行客製化設計。
 
-客製化服務：收費會依據會員等級、商品類型、客製化程度及數量等因素而有所不同。
+• 客製化服務：收費會依據會員等級、商品類型、客製化程度及數量等因素而有所不同。
 
-售後服務：雖然目前未提供保固和維修，但如遇到任何問題，我們將協助您處理。
+• 售後服務：雖然目前未提供保固和維修，但如遇到任何問題，我們將協助您處理。
 
 若您有任何疑問或需進一步的協助，請隨時告訴我！😊`
     }
@@ -1306,6 +1357,37 @@ const ChatWindowComponent = (props) => {
     setShowOptions(false);
   };
 
+  // 處理商品點擊
+  const handleProductClick = (product) => {
+    console.log('點擊商品:', product);
+
+    // 1. 添加購買動機訊息到聊天記錄
+    const motivationMessage = {
+      role: 'assistant',
+      content: `您對「${product.name}」感興趣！這是一個很棒的選擇。`,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      isProductInterest: true,
+      productInfo: product
+    };
+
+    setChatHistory(prev => [...prev, motivationMessage]);
+
+    // 2. TODO: 實現以下功能
+    // - 導向商品簡介頁
+    // - 上傳購買動機到 Inky 系統
+    // - 與後端 API 整合記錄用戶興趣
+
+    // 3. 暫時顯示商品詳細資訊
+    const detailMessage = {
+      role: 'assistant',
+      content: `商品詳細資訊：\n名稱：${product.name}\n價格：${product.price}\n${product.category ? `分類：${product.category}\n` : ''}${product.description ? `描述：${product.description}` : ''}`,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      isProductDetail: true
+    };
+
+    setChatHistory(prev => [...prev, detailMessage]);
+  };
+
   // 處理查看贈品推薦（跳到尋找贈品流程）
   const handleViewGiftRecommendations = () => {
     const giftInquiryMessage = {
@@ -1399,6 +1481,14 @@ const ChatWindowComponent = (props) => {
                     <div className="search-prompt-container">
                       <p>{message.content}</p>
                     </div>
+                  ) : message.isProductInterest ? (
+                    <div className="product-interest-container">
+                      <p>{message.content}</p>
+                    </div>
+                  ) : message.isProductDetail ? (
+                    <div className="product-detail-container">
+                      <p style={{ whiteSpace: 'pre-line' }}>{message.content}</p>
+                    </div>
                   ) : message.isNoResults ? (
                     <div className="no-results-container">
                       <p style={{ whiteSpace: 'pre-line' }}>{message.content}</p>
@@ -1406,7 +1496,7 @@ const ChatWindowComponent = (props) => {
                         <Button type="primary" style={{ marginRight: '10px' }} onClick={handleOtherKeywordSearch}>
                           其他關鍵字搜尋
                         </Button>
-                        <Button onClick={handleBackToMenu}>
+                        <Button type="primary" onClick={handleBackToMenu}>
                           回主選單
                         </Button>
                       </div>
@@ -1423,7 +1513,7 @@ const ChatWindowComponent = (props) => {
                         <Button type="primary" style={{ marginRight: '10px' }} onClick={handleViewAllProducts}>
                           查看所有商品
                         </Button>
-                        <Button onClick={handleBackToMenu}>
+                        <Button type="primary" onClick={handleBackToMenu}>
                           回主選單
                         </Button>
                       </div>
@@ -1435,7 +1525,7 @@ const ChatWindowComponent = (props) => {
                         <p>{message.content}</p>
                       </div>
                       <div className="orders-list">
-                        {message.orderData.orders.map((order, orderIndex) => (
+                        {message.orderData.orders.map((order) => (
                           <div key={order.id} className="order-card">
                             <div className="order-header">
                               <span className="order-id">#{order.id}</span>
@@ -1476,7 +1566,7 @@ const ChatWindowComponent = (props) => {
                           <Button type="primary" style={{ marginRight: '10px' }} onClick={handleViewGiftRecommendations}>
                             查看贈品推薦
                           </Button>
-                          <Button onClick={handleBackToMenu}>
+                          <Button type="primary" onClick={handleBackToMenu}>
                             回主選單
                           </Button>
                         </div>
@@ -1489,8 +1579,13 @@ const ChatWindowComponent = (props) => {
                         <p>{message.content}</p>
                       </div>
                       <div className="products-grid">
-                        {message.productData.totalProducts.slice(0, message.productData.displayedCount).map((product, productIndex) => (
-                          <div key={product.id} className="product-card">
+                        {message.productData.totalProducts.slice(0, message.productData.displayedCount).map((product) => (
+                          <div
+                            key={product.id}
+                            className="product-card clickable-product-card"
+                            onClick={() => handleProductClick(product)}
+                            style={{ cursor: 'pointer' }}
+                          >
                             <div className="product-image">
                               <img src={product.image} alt={product.name} />
                             </div>
@@ -1525,7 +1620,7 @@ const ChatWindowComponent = (props) => {
                         >
                           其他關鍵字搜尋
                         </Button>
-                        <Button onClick={handleBackToMenu}>
+                        <Button type="primary" onClick={handleBackToMenu}>
                           回主選單
                         </Button>
                       </div>
@@ -1552,7 +1647,7 @@ const ChatWindowComponent = (props) => {
                         >
                           其他關鍵字搜尋
                         </Button>
-                        <Button onClick={handleBackToMenu}>
+                        <Button type="primary" onClick={handleBackToMenu}>
                           回主選單
                         </Button>
                       </div>
