@@ -856,6 +856,124 @@ const ChatWindowComponent = (props) => {
     return products.length > 0 ? products : null;
   };
 
+  // 同義詞字典 - 用於擴充搜尋關鍵字
+  const synonyms = {
+    "辦公": ["辦公用品", "文具", "商務"],
+    "辦公小物": ["文具", "辦公用品", "商務用品"],
+    "生活": ["生活雜貨", "家居", "日用品"],
+    "生活用品": ["生活雜貨", "家居", "日用品"],
+    "收納": ["包袋收納", "整理", "儲物"],
+    "包包": ["包袋收納", "袋子", "背包"],
+    "杯子": ["杯瓶餐具", "水杯", "茶杯"],
+    "餐具": ["杯瓶餐具", "用餐", "廚具"],
+    "衣服": ["衣物配件", "服裝", "穿搭"],
+    "配件": ["配件飾品", "裝飾", "飾品"],
+    "送男友": ["男性", "男士", "紳士"],
+    "送女友": ["女性", "女士", "淑女"],
+    "療癒系": ["舒壓", "放鬆", "可愛"],
+    "科技感": ["現代", "時尚", "高科技"],
+    "環保": ["綠色", "永續", "生態"],
+    // 新增趣味和創意相關關鍵字
+    "整人": ["趣味", "搞笑", "惡搞", "創意", "有趣"],
+    "趣味": ["有趣", "好玩", "創意", "搞笑", "新奇"],
+    "趣味小物": ["有趣", "好玩", "創意", "小物", "新奇"],
+    "搞笑": ["幽默", "有趣", "好玩", "創意"],
+    "創意": ["新奇", "特別", "獨特", "有趣"],
+    "新奇": ["特別", "創意", "獨特", "有趣"],
+    "小物": ["小東西", "小商品", "配件", "用品"],
+    "禮物": ["禮品", "贈品", "禮贈品"],
+    "實用": ["好用", "方便", "便利", "功能性"],
+    // 新增帽子相關關鍵字
+    "帽子": ["帽", "棒球帽", "毛帽", "針織帽"],
+    "帽": ["帽子", "棒球帽", "毛帽", "針織帽"],
+    "棒球帽": ["帽子", "帽", "運動帽"],
+    "毛帽": ["帽子", "帽", "針織帽", "保暖帽"],
+    "針織帽": ["毛帽", "帽子", "帽", "保暖帽"],
+    // 新增更多常見關鍵字
+    "筆": ["圓珠筆", "金屬筆", "文具", "辦公用品"],
+    "圓珠筆": ["筆", "文具", "辦公用品"],
+    "記事本": ["筆記本", "文具", "辦公用品"],
+    "筆記本": ["記事本", "文具", "辦公用品"],
+    "零錢包": ["包", "錢包", "包袋收納"],
+    "錢包": ["零錢包", "包", "包袋收納"],
+    "托特包": ["包", "袋子", "包袋收納"],
+    "網格包": ["包", "收納包", "包袋收納"]
+  };
+
+  // 擴充關鍵字函數
+  const expandKeywords = (keyword) => {
+    const expanded = [keyword.toLowerCase()];
+
+    // 檢查是否有同義詞
+    for (const [key, syns] of Object.entries(synonyms)) {
+      if (key.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(key)) {
+        expanded.push(...syns.map(s => s.toLowerCase()));
+      }
+      if (syns.some(syn => syn.toLowerCase().includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(syn.toLowerCase()))) {
+        expanded.push(key.toLowerCase());
+        expanded.push(...syns.map(s => s.toLowerCase()));
+      }
+    }
+
+    return [...new Set(expanded)]; // 去重
+  };
+
+  // 模糊搜尋商品的函數
+  const searchProducts = (keyword) => {
+    if (!keyword || keyword.trim() === '') return [];
+
+    const expandedKeywords = expandKeywords(keyword.trim());
+
+    // 擴充的模擬商品資料
+    const mockProducts = [
+      { name: '帆布托特包', price: '160元', category: '包袋收納、配件商品、生活雜貨' },
+      { name: '網格收納包', price: '130元', category: '包袋收納、生活雜貨' },
+      { name: '燈芯絨兩用包', price: '300元', category: '包袋收納、生活雜貨' },
+      { name: '密碼鎖收納包', price: '250元', category: '包袋收納、生活雜貨、配件飾品' },
+      { name: '帆布零錢包', price: '95元', category: '包袋收納、配件飾品、生活雜貨' },
+      { name: '皮革筆袋', price: '50元', category: '文具、配件飾品、生活雜貨' },
+      { name: '不銹鋼杯', price: '160元', category: '杯瓶餐具、生活雜貨、家居' },
+      { name: '環保杯 800mL', price: '750元', category: '杯瓶餐具、生活雜貨、家居、環保' },
+      { name: '電鍍圓珠筆', price: '20元', category: '文具、辦公用品、配件飾品' },
+      { name: 'PU束繩記事本', price: '200元', category: '文具、辦公用品、生活雜貨' },
+      { name: '金屬圓珠筆', price: '25元', category: '文具、辦公用品' },
+      { name: '商務金屬圓珠筆', price: '25元', category: '文具、辦公用品' },
+      { name: '便條紙', price: '14元', category: '文具、辦公用品' },
+      { name: '皮革文件夾', price: '90元', category: '文具、辦公用品' },
+      { name: '棒球帽', price: '160元', category: '衣物配件、配件飾品、生活雜貨' },
+      { name: '針織毛帽', price: '270元', category: '衣物配件、生活雜貨' }
+    ];
+
+    // 多欄位模糊搜尋，支援同義詞
+    const results = [];
+    for (const product of mockProducts) {
+      let matchScore = 0;
+
+      // 搜尋商品名稱
+      for (const expKeyword of expandedKeywords) {
+        if (product.name.toLowerCase().includes(expKeyword)) {
+          matchScore += 3; // 名稱匹配權重最高
+        }
+      }
+
+      // 搜尋分類
+      for (const expKeyword of expandedKeywords) {
+        if (product.category.toLowerCase().includes(expKeyword)) {
+          matchScore += 2; // 分類匹配權重中等
+        }
+      }
+
+      if (matchScore > 0) {
+        results.push({ ...product, matchScore });
+      }
+    }
+
+    // 按匹配分數排序
+    return results.sort((a, b) => b.matchScore - a.matchScore);
+  };
+
+
+
   // 提取搜尋關鍵字
   const extractSearchKeyword = (userInput, botResponse) => {
     const keywords = ['包裝', '收納', '馬克杯', '筆記本', '帆布袋', '滑鼠墊', 'USB', '書籤'];
@@ -1009,9 +1127,63 @@ const ChatWindowComponent = (props) => {
 
     const updatedHistory = [...chatHistory, userMessage];
     setChatHistory(updatedHistory);
+
+    // 檢查是否是回應搜尋提示的關鍵字搜尋
+    const lastMessage = chatHistory[chatHistory.length - 1];
+    const isRespondingToSearchPrompt = lastMessage && lastMessage.isSearchPrompt;
+
+    const currentUserInput = userInput;
     setUserInput('');
     setShowOptions(false);
     setLoading(true);
+
+    // 如果是回應搜尋提示，直接使用前端模糊搜尋
+    if (isRespondingToSearchPrompt) {
+      console.log('檢測到關鍵字搜尋，使用前端模糊搜尋:', currentUserInput);
+
+      // 使用前端模糊搜尋
+      const frontendResults = searchProducts(currentUserInput);
+
+      if (frontendResults && frontendResults.length > 0) {
+        console.log('前端模糊搜尋找到商品:', frontendResults);
+
+        const productsWithId = frontendResults.map((product, index) => ({
+          ...product,
+          id: `product_${Date.now()}_${index}`,
+          image: product.image || '/api/placeholder/150/150'
+        }));
+
+        const productMessage = {
+          role: 'assistant',
+          content: `以下是符合「${currentUserInput}」的推薦商品：`,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isLoading: false,
+          isProductSearch: true,
+          productData: {
+            totalProducts: productsWithId,
+            displayedCount: Math.min(3, productsWithId.length),
+            searchKeyword: currentUserInput
+          }
+        };
+
+        setChatHistory(prev => [...prev, productMessage]);
+      } else {
+        // 前端搜尋無結果
+        const noResultMessage = {
+          role: 'assistant',
+          content: `抱歉，找不到符合「${currentUserInput}」的贈品😢\n可以試試其他關鍵字，例如「生活用品」、「療癒系」、「科技感」等～`,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isLoading: false,
+          isNoResults: true,
+          searchKeyword: currentUserInput
+        };
+
+        setChatHistory(prev => [...prev, noResultMessage]);
+      }
+
+      setLoading(false);
+      return; // 直接返回，不調用後端 API
+    }
 
     try {
       const apiChatHistory = updatedHistory.map(msg => ({
@@ -1093,7 +1265,12 @@ const ChatWindowComponent = (props) => {
       const isGiftSearchKeyword = userInput.includes('包') || userInput.includes('收納') || userInput.includes('禮品') ||
                                  userInput.includes('贈品') || userInput.includes('辦公') || userInput.includes('生活') ||
                                  userInput.includes('馬克杯') || userInput.includes('筆記本') || userInput.includes('帆布袋') ||
-                                 userInput.includes('文具') || userInput.includes('用品') || userInput.includes('小物');
+                                 userInput.includes('文具') || userInput.includes('用品') || userInput.includes('小物') ||
+                                 userInput.includes('整人') || userInput.includes('趣味') || userInput.includes('搞笑') ||
+                                 userInput.includes('創意') || userInput.includes('新奇') || userInput.includes('有趣') ||
+                                 userInput.includes('禮物') || userInput.includes('實用') || userInput.includes('好玩') ||
+                                 userInput.includes('帽子') || userInput.includes('帽') || userInput.includes('棒球帽') ||
+                                 userInput.includes('毛帽') || userInput.includes('針織帽');
 
       if (products && products.length > 0) {
         console.log('設置為商品搜尋結果');
@@ -1118,11 +1295,56 @@ const ChatWindowComponent = (props) => {
         cleanedContent.includes('抱歉') || cleanedContent.includes('很遺憾') || cleanedContent.includes('無結果') ||
         cleanedContent.includes('不存在') || cleanedContent.includes('查無')
       )) {
-        // 明確的無搜尋結果情況
-        console.log('檢測到無搜尋結果');
-        finalMessage.isNoResults = true;
-        finalMessage.searchKeyword = userInput;
-        finalMessage.content = `抱歉，找不到符合「${userInput}」的贈品😢\n可以試試其他關鍵字，例如「生活用品」、「療癒系」、「科技感」等～`;
+        // 後端無搜尋結果時，嘗試前端模糊搜尋
+        console.log('檢測到無搜尋結果，嘗試前端模糊搜尋');
+        const frontendResults = searchProducts(userInput);
+
+        if (frontendResults && frontendResults.length > 0) {
+          console.log('前端模糊搜尋找到商品:', frontendResults);
+          finalMessage.isProductSearch = true;
+
+          // 為每個商品添加 ID 和圖片
+          const productsWithId = frontendResults.map((product, index) => ({
+            ...product,
+            id: `product_${Date.now()}_${index}`,
+            image: product.image || '/api/placeholder/150/150'
+          }));
+
+          finalMessage.productData = {
+            totalProducts: productsWithId,
+            displayedCount: Math.min(3, productsWithId.length),
+            searchKeyword: userInput
+          };
+          finalMessage.content = `以下是符合「${userInput}」的推薦商品：`;
+        } else {
+          // 前端也找不到時顯示無結果
+          console.log('前端模糊搜尋也無結果');
+          finalMessage.isNoResults = true;
+          finalMessage.searchKeyword = userInput;
+          finalMessage.content = `抱歉，找不到符合「${userInput}」的贈品😢\n可以試試其他關鍵字，例如「生活用品」、「療癒系」、「科技感」等～`;
+        }
+      } else if (isGiftSearchKeyword && !products) {
+        // 如果是商品搜尋關鍵字但後端沒有返回商品，直接使用前端搜尋
+        console.log('商品搜尋關鍵字，使用前端模糊搜尋');
+        const frontendResults = searchProducts(userInput);
+
+        if (frontendResults && frontendResults.length > 0) {
+          console.log('前端模糊搜尋找到商品:', frontendResults);
+          finalMessage.isProductSearch = true;
+
+          const productsWithId = frontendResults.map((product, index) => ({
+            ...product,
+            id: `product_${Date.now()}_${index}`,
+            image: product.image || '/api/placeholder/150/150'
+          }));
+
+          finalMessage.productData = {
+            totalProducts: productsWithId,
+            displayedCount: Math.min(3, productsWithId.length),
+            searchKeyword: userInput
+          };
+          finalMessage.content = `以下是符合「${userInput}」的推薦商品：`;
+        }
       }
 
       const finalHistory = [...updatedHistory, finalMessage];
@@ -1407,7 +1629,10 @@ const ChatWindowComponent = (props) => {
     window.open('/products', '_blank');
   };
 
-  const handleClose = () => setIsOpen(false);
+  const handleClose = () => {
+    // 改為縮小視窗而不是完全關閉
+    setIsMinimized(true);
+  };
 
   const toggleMinimize = () => {
     setIsMinimized(prev => !prev);
@@ -1427,8 +1652,6 @@ const ChatWindowComponent = (props) => {
       setLoading(false);
     }
   };
-
-  if (!isOpen) return null;
 
   return (
     <React.Fragment>

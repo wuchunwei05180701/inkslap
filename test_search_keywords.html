@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關鍵字搜尋測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            background-color: #f6ffed;
+            border: 1px solid #b7eb8f;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .test-section h3 {
+            margin: 0 0 10px 0;
+            color: #52c41a;
+        }
+        .keyword-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .keyword-item {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .keyword-item:hover {
+            background-color: #bae7ff;
+            transform: translateY(-1px);
+        }
+        .problem-section {
+            background-color: #fff2e8;
+            border: 1px solid #ffbb96;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .problem-section h3 {
+            margin: 0 0 10px 0;
+            color: #fa8c16;
+        }
+        .solution-section {
+            background-color: #f6ffed;
+            border: 1px solid #b7eb8f;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .solution-section h3 {
+            margin: 0 0 10px 0;
+            color: #52c41a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 關鍵字搜尋功能測試</h1>
+        
+        <div class="problem-section">
+            <h3>❌ 問題分析：為什麼「帽子」搜尋不到？</h3>
+            <ul>
+                <li><strong>同義詞缺失</strong>：原本的同義詞字典沒有包含「帽子」→「帽」的對應關係</li>
+                <li><strong>關鍵字檢測不完整</strong>：前端的 isGiftSearchKeyword 沒有包含帽子相關關鍵字</li>
+                <li><strong>搜尋邏輯問題</strong>：雖然商品資料中有「棒球帽」和「針織毛帽」，但搜尋「帽子」無法匹配到</li>
+            </ul>
+        </div>
+
+        <div class="solution-section">
+            <h3>✅ 解決方案：已修復的功能</h3>
+            <ul>
+                <li><strong>擴展同義詞字典</strong>：添加了帽子、筆、包等常見關鍵字的同義詞對應</li>
+                <li><strong>更新關鍵字檢測</strong>：前端現在可以正確識別帽子相關的搜尋請求</li>
+                <li><strong>改善搜尋匹配</strong>：現在搜尋「帽子」可以找到「棒球帽」和「針織毛帽」</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 現在可以成功搜尋的關鍵字</h3>
+            
+            <h4>👒 帽子類（已修復）</h4>
+            <div class="keyword-grid">
+                <div class="keyword-item">帽子</div>
+                <div class="keyword-item">帽</div>
+                <div class="keyword-item">棒球帽</div>
+                <div class="keyword-item">毛帽</div>
+                <div class="keyword-item">針織帽</div>
+            </div>
+
+            <h4>📦 包袋收納類</h4>
+            <div class="keyword-grid">
+                <div class="keyword-item">包</div>
+                <div class="keyword-item">包包</div>
+                <div class="keyword-item">收納</div>
+                <div class="keyword-item">托特包</div>
+                <div class="keyword-item">零錢包</div>
+                <div class="keyword-item">錢包</div>
+            </div>
+
+            <h4>✏️ 文具辦公類</h4>
+            <div class="keyword-grid">
+                <div class="keyword-item">筆</div>
+                <div class="keyword-item">圓珠筆</div>
+                <div class="keyword-item">文具</div>
+                <div class="keyword-item">辦公</div>
+                <div class="keyword-item">記事本</div>
+                <div class="keyword-item">筆記本</div>
+            </div>
+
+            <h4>🥤 杯具餐具類</h4>
+            <div class="keyword-grid">
+                <div class="keyword-item">杯</div>
+                <div class="keyword-item">杯子</div>
+                <div class="keyword-item">不銹鋼杯</div>
+                <div class="keyword-item">環保杯</div>
+                <div class="keyword-item">餐具</div>
+            </div>
+
+            <h4>🏠 生活用品類</h4>
+            <div class="keyword-grid">
+                <div class="keyword-item">生活用品</div>
+                <div class="keyword-item">生活雜貨</div>
+                <div class="keyword-item">家居</div>
+                <div class="keyword-item">配件</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 測試步驟</h3>
+            <ol>
+                <li><strong>測試帽子搜尋</strong>：在聊天組件中輸入「帽子」，應該會找到棒球帽和針織毛帽</li>
+                <li><strong>測試筆類搜尋</strong>：輸入「筆」，應該會找到各種圓珠筆</li>
+                <li><strong>測試包類搜尋</strong>：輸入「包」，應該會找到各種包袋</li>
+                <li><strong>測試杯類搜尋</strong>：輸入「杯子」，應該會找到不銹鋼杯和環保杯</li>
+                <li><strong>驗證商品點擊</strong>：點擊任一商品卡片，確認出現興趣確認和詳細資訊</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 技術改進細節</h3>
+            <ul>
+                <li><strong>後端同義詞擴展</strong>：Tool/tools/get_product.py 中的 SYNONYMS 字典</li>
+                <li><strong>前端同義詞擴展</strong>：chat_windows/src/ChatWindow.js 中的 synonyms 字典</li>
+                <li><strong>關鍵字檢測擴展</strong>：ChatWindowWebComponent.js 中的 isGiftSearchKeyword 邏輯</li>
+                <li><strong>模糊搜尋改善</strong>：支援部分匹配和多欄位搜尋</li>
+            </ul>
+        </div>
+
+        <!-- 聊天組件測試區域 -->
+        <div style="margin-top: 30px; border-top: 2px solid #f0f0f0; padding-top: 20px;">
+            <h2>💬 聊天組件測試區域</h2>
+            <p>請在下方聊天組件中測試上述關鍵字，驗證搜尋功能是否正常工作：</p>
+            <chat-window-web-component 
+                api-url="/api/chat"
+                history-path="/history.json">
+            </chat-window-web-component>
+        </div>
+    </div>
+
+    <!-- 載入聊天組件 -->
+    <script src="chat_windows/src/ChatWindowWebComponent.js"></script>
+</body>
+</html>
