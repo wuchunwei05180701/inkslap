@@ -575,6 +575,14 @@ const styles = `
   align-items: center;
 }
 
+.no-orders-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
 /* 商品搜尋結果底部按鈕樣式 */
 .product-search-actions {
   margin-top: 15px;
@@ -585,7 +593,16 @@ const styles = `
   gap: 8px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+
+.product-search-actions .ant-btn {
+  font-size: 10px;
+  padding: 2px 8px;
+  height: 24px;
+  min-width: 60px;
+  white-space: nowrap;
+  border-radius: 4px;
 }
 
 .all-products-loaded-message {
@@ -614,6 +631,9 @@ const styles = `
   padding: 12px;
   background-color: #fafafa;
   border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .all-orders-loaded-message {
@@ -1400,20 +1420,32 @@ const ChatWindowComponent = (props) => {
         return;
       }
 
-      // 已登入，顯示訂單摘要
-      const orderSummaryMessage = {
-        role: 'assistant',
-        content: '以下是您最近的訂單記錄：',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        isOrderSummary: true,
-        orderData: {
-          orders: mockOrders.slice(0, 3), // 顯示最多3筆訂單
-          displayedCount: Math.min(3, mockOrders.length),
-          hasMore: mockOrders.length > 3,
-          allLoaded: mockOrders.length <= 3
-        }
-      };
-      const updatedHistory = [...chatHistory, userMessage, orderSummaryMessage];
+      // 已登入，檢查是否有訂單
+      let orderMessage;
+      if (mockOrders.length === 0) {
+        // 沒有訂單的情況
+        orderMessage = {
+          role: 'assistant',
+          content: '您目前還沒有任何訂單紀錄喔～\n有興趣看看我們的贈品推薦嗎？也許會找到喜歡的東西',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isNoOrders: true
+        };
+      } else {
+        // 有訂單的情況
+        orderMessage = {
+          role: 'assistant',
+          content: '以下是您最近的訂單記錄：',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isOrderSummary: true,
+          orderData: {
+            orders: mockOrders.slice(0, 3), // 顯示最多3筆訂單
+            displayedCount: Math.min(3, mockOrders.length),
+            hasMore: mockOrders.length > 3,
+            allLoaded: mockOrders.length <= 3
+          }
+        };
+      }
+      const updatedHistory = [...chatHistory, userMessage, orderMessage];
       setChatHistory(updatedHistory);
       setShowOptions(false);
       await saveChatHistory(updatedHistory.map(msg => ({
@@ -1716,7 +1748,7 @@ const ChatWindowComponent = (props) => {
                     <div className="no-results-container">
                       <p style={{ whiteSpace: 'pre-line' }}>{message.content}</p>
                       <div className="no-results-actions">
-                        <Button type="primary" style={{ marginRight: '10px' }} onClick={handleOtherKeywordSearch}>
+                        <Button type="primary" onClick={handleOtherKeywordSearch}>
                           其他關鍵字搜尋
                         </Button>
                         <Button type="primary" onClick={handleBackToMenu}>
@@ -1733,8 +1765,20 @@ const ChatWindowComponent = (props) => {
                         {message.content}
                       </div>
                       <div className="about-actions">
-                        <Button type="primary" style={{ marginRight: '10px' }} onClick={handleViewAllProducts}>
+                        <Button type="primary" onClick={handleViewAllProducts}>
                           查看所有商品
+                        </Button>
+                        <Button type="primary" onClick={handleBackToMenu}>
+                          回主選單
+                        </Button>
+                      </div>
+                    </div>
+                  ) : message.isNoOrders ? (
+                    <div className="no-orders-container">
+                      <p style={{ whiteSpace: 'pre-line' }}>{message.content}</p>
+                      <div className="no-orders-actions">
+                        <Button type="primary" onClick={handleViewGiftRecommendations}>
+                          查看贈品推薦
                         </Button>
                         <Button type="primary" onClick={handleBackToMenu}>
                           回主選單
@@ -1767,32 +1811,38 @@ const ChatWindowComponent = (props) => {
                       </div>
                       {/* 訂單操作按鈕區域 */}
                       <div className="order-actions-container">
-                        {message.orderData.hasMore && (
-                          <Button
-                            type="link"
-                            onClick={() => handleViewMoreOrders(message)}
-                            style={{ marginBottom: '10px' }}
-                          >
-                            查看更多訂單
-                          </Button>
-                        )}
-
-                        {/* 全部載入完成提示 */}
-                        {message.orderData.allLoaded && message.orderData.orders.length > 3 && (
-                          <div className="all-orders-loaded-message">
-                            <p>✅ 已顯示全部訂單囉～</p>
+                        {/* 有更多訂單時顯示查看更多按鈕 */}
+                        {message.orderData.hasMore ? (
+                          <div className="order-actions">
+                            <Button
+                              type="primary"
+                              onClick={() => handleViewMoreOrders(message)}
+                            >
+                              查看更多
+                            </Button>
+                            <Button type="primary" onClick={handleBackToMenu}>
+                              回主選單
+                            </Button>
                           </div>
+                        ) : (
+                          /* 沒有更多訂單時顯示贈品推薦按鈕 */
+                          <>
+                            {/* 全部載入完成提示 */}
+                            {message.orderData.orders.length > 3 && (
+                              <div className="all-orders-loaded-message">
+                                <p>✅ 已顯示全部訂單囉～</p>
+                              </div>
+                            )}
+                            <div className="order-actions">
+                              <Button type="primary" onClick={handleViewGiftRecommendations}>
+                                查看贈品推薦
+                              </Button>
+                              <Button type="primary" onClick={handleBackToMenu}>
+                                回主選單
+                              </Button>
+                            </div>
+                          </>
                         )}
-
-                        {/* 主要操作按鈕 - 始終顯示 */}
-                        <div className="order-actions">
-                          <Button type="primary" style={{ marginRight: '10px' }} onClick={handleViewGiftRecommendations}>
-                            查看贈品推薦
-                          </Button>
-                          <Button type="primary" onClick={handleBackToMenu}>
-                            回主選單
-                          </Button>
-                        </div>
                       </div>
                     </div>
                   ) : message.isProductSearch ? (
@@ -1829,16 +1879,14 @@ const ChatWindowComponent = (props) => {
                       <div className="product-search-actions">
                         {message.productData.displayedCount < message.productData.totalProducts.length && (
                           <Button
-                            type="link"
+                            type="primary"
                             onClick={() => handleViewMoreProducts(message)}
-                            style={{ marginRight: '10px' }}
                           >
-                            載入更多商品 ({message.productData.totalProducts.length - message.productData.displayedCount} 項)
+                            查看更多
                           </Button>
                         )}
                         <Button
                           type="primary"
-                          style={{ marginRight: '10px' }}
                           onClick={handleOtherKeywordSearch}
                         >
                           其他關鍵字搜尋
@@ -1865,7 +1913,6 @@ const ChatWindowComponent = (props) => {
                       <div className="product-search-actions">
                         <Button
                           type="primary"
-                          style={{ marginRight: '10px' }}
                           onClick={handleOtherKeywordSearch}
                         >
                           其他關鍵字搜尋
